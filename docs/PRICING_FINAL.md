@@ -34,3 +34,20 @@ EXEMPTION: audit FREE | filing 10,000
   registration — confirms 10,000 membership fee is a one-time, separate
   cost from the per-diet 32,500 exam fee. Journey math (42,500 = 10k + 32.5k)
   now fully account-verified, both line items.
+
+
+## MCP COURSE STRUCTURE CONFIRMED (Sept 17, 2026, owner's live registration screen)
+Microfinance Accreditation I (mandatory, 3): MF301, MF302, MF303
+Microfinance Examination II (2 mandatory + 1 elective): MF401 (Risk
+Management & Internal Control), MF402 (Ethics & Corporate Governance)
+mandatory; candidate picks ONE elective — MF403 (Digital Finance) or
+MF404 (SME Management & Development).
+TOTAL = 6 courses (3 + 2 + 1 elective) — CONFIRMS our existing 6-course
+pricing basis is structurally correct.
+EXEMPTION DEADLINE RULE (confirmed, portal warning text): exemption
+processing MUST complete BEFORE the candidate's LAST examination paper —
+cannot qualify via exemption after that point. Feeds urgency into the
+free Exemption Audit funnel — audit early, not late.
+Exact October 2026 exam dates: image resolution insufficient to read
+reliably — NOT publishing unverified dates per research-first rule.
+Awaiting owner confirmation or clearer read.
