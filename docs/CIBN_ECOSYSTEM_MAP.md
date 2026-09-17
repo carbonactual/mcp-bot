@@ -94,3 +94,23 @@ MESSAGING RULE: never offer/imply Exemption Audit for a failed subject —
 route failed-subject candidates to Rescue Resit instead. Exemption Audit
 is for subjects the candidate has NOT yet attempted, based on prior
 academic qualification (BSc/HND/OND etc).
+
+
+## E-PAYMENTS PROGRAMME (EPP) DISCOVERED (Sept 17, 2026, owner's live registration screen)
+NEW track not previously mapped — separate from ACIB/MCP/CIB/Certifications.
+Same October 2026 diet, same "Remote Online Proctoring Platform", Private
+Study Only, Naira only.
+E-Payment I (4 courses, mandatory): EP101 Introduction to Electronic
+Payments | EP102 E-Payment Operations | EP103 E-Payment Regulation |
+EP104 E-Payment Operations Governance & Law (& Deontological Learning)
+E-Payment II (7 courses): EP201 The Business of Digital Financial
+Services & Innovation | EP202 Digital Identity | EP203 E-Payment
+Technology and Operations | EP204 Regulatory Environment for EPs | EP205
+E-Payment Security, Audit & Compliance | EP206 Financial Inclusion |
+EP207 E-Payment Operations Governance & Law
+E-Payment III: no courses populated on owner's screen — status unclear
+(not yet launched for this diet, or requires prior completion to unlock).
+PRICING STATUS: NOT PRICED — zero verified exam fees for this track.
+Do NOT invent EPP prices. Awaiting owner confirmation of exam fees
+(0700-DIAL-CIBN or portal course-selection totals) before applying the
+coaching/Pass Package formula used elsewhere in the ecosystem.
