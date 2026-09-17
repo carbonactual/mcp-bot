@@ -1,70 +1,273 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#04110d">
+<meta name="description" content="CIBN BOT — your CIBN journey, at your pace. MCP, ACIB and certification prep with full-diet mocks, coaching, concierge and proctoring-ready checks. A product of Institute GPT, powered by ABBA.">
 <title>CIBN BOT — Your CIBN journey, at your pace | Institute GPT</title>
-<meta name="description" content="Personalized CIBN exam companion: MCP, ACIB and certification programmes. Powered by ABBA. Alerts, mock exams, examiners' report insights, registration and handout help. A product of Institute GPT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0e17;--card:#111827;--gold:#f5b301;--txt:#e8eef6;--mut:#8fa0b3;--grn:#25d366}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6}
-.wrap{max-width:760px;margin:0 auto;padding:24px 20px}
-.badge{display:inline-block;background:rgba(245,179,1,.15);color:var(--gold);border:1px solid var(--gold);padding:4px 14px;border-radius:20px;font-size:.8rem;font-weight:600;letter-spacing:.5px}
-h1{font-size:2.1rem;line-height:1.25;margin:18px 0 10px}
-h1 span{color:var(--gold)}
-h2{font-size:1.25rem;color:var(--gold);margin:26px 0 12px}
-.sub{color:var(--mut);font-size:1.05rem;margin-bottom:20px}
-.card{background:var(--card);border:1px solid #1f2a3d;border-radius:14px;padding:20px;margin-bottom:14px}
-.card h3{color:var(--txt);margin-bottom:6px;font-size:1rem}
-.card p{color:var(--mut);font-size:.93rem}
-.cta{display:block;text-align:center;background:var(--grn);color:#04120a;text-decoration:none;font-weight:700;font-size:1.05rem;padding:16px;border-radius:12px;margin:22px 0}
-.alert{background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.35);border-radius:12px;padding:14px 18px;font-size:.95rem;margin-bottom:18px}
-.feat{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.f{background:var(--card);border:1px solid #1f2a3d;border-radius:12px;padding:14px}
-.f b{color:var(--txt);display:block;margin-bottom:4px;font-size:.92rem}
-.f small{color:var(--mut);font-size:.82rem}
-footer{text-align:center;color:var(--mut);font-size:.85rem;padding:28px 0;border-top:1px solid #1f2a3d;margin-top:24px}
-footer b{color:var(--txt)}
-@media(max-width:520px){.feat{grid-template-columns:1fr}h1{font-size:1.65rem}}
+:root{
+  --bg:#040a08;--bg2:#071410;
+  --glass:rgba(255,255,255,.045);--glass2:rgba(255,255,255,.07);
+  --line:rgba(120,255,214,.14);--line2:rgba(120,255,214,.3);
+  --mint:#14e6a6;--teal:#0fb5d6;--indigo:#7c6cff;
+  --ink:#eafff6;--muted:#8fa8a0;--dim:#5d716a;
+  --font:"Space Grotesk","Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.aura{position:fixed;inset:0;z-index:-2;overflow:hidden;background:
+  radial-gradient(1200px 800px at 85% -10%,rgba(15,181,214,.14),transparent 60%),
+  radial-gradient(1000px 700px at -10% 110%,rgba(124,108,255,.12),transparent 60%),
+  radial-gradient(900px 600px at 50% 120%,rgba(20,230,166,.10),transparent 60%),
+  linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:drift 26s ease-in-out infinite}
+.orb.a{width:520px;height:520px;background:rgba(20,230,166,.16);top:-160px;right:-120px}
+.orb.b{width:460px;height:460px;background:rgba(124,108,255,.14);bottom:-180px;left:-140px;animation-delay:-9s}
+.orb.c{width:360px;height:360px;background:rgba(15,181,214,.12);top:40%;left:55%;animation-delay:-17s}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-60px,40px) scale(1.08)}66%{transform:translate(40px,-30px) scale(.94)}}
+.gridlines{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(120,255,214,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(120,255,214,.03) 1px,transparent 1px);
+  background-size:56px 56px;mask-image:radial-gradient(900px 600px at 50% 0%,#000 0%,transparent 100%)}
+.wrap{width:min(1120px,calc(100% - 30px));margin:auto}
+button,input,select{font:inherit}
+a{text-decoration:none;color:inherit}
+::selection{background:rgba(20,230,166,.3)}
+
+.top{position:sticky;top:0;z-index:40;background:rgba(4,10,8,.7);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.topbar{height:70px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:-.02em;font-size:15px}
+.mark{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(20,230,166,.25),rgba(15,181,214,.18));
+  border:1px solid var(--line2);color:var(--mint);font-weight:700;
+  box-shadow:0 0 24px rgba(20,230,166,.25);animation:markpulse 3.5s ease-in-out infinite}
+@keyframes markpulse{0%,100%{box-shadow:0 0 22px rgba(20,230,166,.22)}50%{box-shadow:0 0 38px rgba(20,230,166,.4)}}
+.right{display:flex;gap:11px;align-items:center}
+.pill{border:1px solid var(--line);background:var(--glass);border-radius:999px;padding:8px 14px;color:var(--muted);font-size:11px;backdrop-filter:blur(8px)}
+.wa{font-size:12px;color:var(--mint)}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+.hero{padding:60px 0 30px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:10px;text-transform:uppercase;letter-spacing:.22em;color:var(--mint);font-weight:600;
+  border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:var(--glass)}
+.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 10px var(--mint);animation:blink 2.2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero h1{font-size:clamp(34px,5vw,60px);line-height:1.04;letter-spacing:-.045em;margin:18px 0 12px;font-weight:700;
+  background:linear-gradient(92deg,#eafff6 30%,#9ff5d8 55%,#7ad8ff 80%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{margin:0;color:var(--muted);font-size:15.5px;max-width:680px}
+.hero-actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:24px}
+.cta{border-radius:14px;padding:13px 20px;font-weight:600;font-size:13px;cursor:pointer;border:0;transition:all .3s}
+.cta.primary{color:#03120c;background:linear-gradient(135deg,#14e6a6,#0fb5d6);box-shadow:0 8px 26px rgba(20,230,166,.28)}
+.cta.primary:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(20,230,166,.4)}
+.cta.ghost{background:var(--glass);border:1px solid var(--line);color:var(--ink)}
+.cta.ghost:hover{border-color:var(--line2);transform:translateY(-2px)}
+
+.alert{margin-top:26px;border:1px solid rgba(20,230,166,.4);border-radius:16px;padding:16px 20px;font-size:13px;
+  background:linear-gradient(135deg,rgba(20,230,166,.1),rgba(15,181,214,.07));display:flex;gap:12px;align-items:flex-start}
+.alert .dot{margin-top:5px;width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 14px var(--mint);animation:blink 1.6s infinite;flex:none}
+.alert b{color:#c9ffe9}
+
+.card{background:var(--glass);border:1px solid var(--line);border-radius:24px;backdrop-filter:blur(14px);
+  box-shadow:0 24px 70px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.05);transition:border-color .35s,transform .35s}
+.card:hover{border-color:var(--line2)}
+
+.pitch{margin-top:22px;padding:30px;position:relative;overflow:hidden}
+.pitch:before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-120px;top:-120px;
+  background:radial-gradient(circle,rgba(20,230,166,.14),transparent 70%)}
+.kicker{font-size:10px;color:var(--mint);font-weight:600;text-transform:uppercase;letter-spacing:.2em}
+.pitch h2{font-size:clamp(24px,3.4vw,34px);line-height:1.12;margin:12px 0;font-weight:700;letter-spacing:-.02em}
+.pitch h2 em{font-style:normal;background:linear-gradient(92deg,#9ff5d8,#7ad8ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.pitch p{color:var(--muted);font-size:13.5px;max-width:720px}
+.compare{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+.compare div{flex:1;min-width:220px;border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:rgba(0,0,0,.2)}
+.compare small{display:block;text-transform:uppercase;letter-spacing:.16em;font-size:9px;color:var(--dim)}
+.compare b{display:block;font-size:20px;margin:7px 0 3px;font-weight:700}
+.compare span{font-size:11.5px;color:var(--muted)}
+.compare .win{border-color:rgba(20,230,166,.45);box-shadow:0 0 30px rgba(20,230,166,.08)}
+.compare .win b{color:var(--mint)}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.stat{border:1px solid var(--line);border-radius:18px;padding:16px;background:var(--glass)}
+.stat b{display:block;font-size:18px;font-weight:700;color:#c9ffe9}
+.stat span{display:block;color:var(--dim);font-size:10.5px;margin-top:4px}
+
+.sechead{margin-top:60px;margin-bottom:20px}
+.sechead .kicker{margin-bottom:8px;display:block}
+.sechead h2{font-size:clamp(24px,3.4vw,34px);margin:0;font-weight:700;letter-spacing:-.02em}
+
+.plans{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.plan{padding:24px;position:relative;overflow:hidden;transition:transform .35s,border-color .35s}
+.plan:hover{transform:translateY(-4px)}
+.plan.feature{grid-column:1/-1;border-color:rgba(20,230,166,.45);box-shadow:0 0 40px rgba(20,230,166,.1)}
+.plan .tag{position:absolute;top:14px;right:14px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#03120c;
+  background:linear-gradient(135deg,#14e6a6,#0fb5d6);border-radius:999px;padding:5px 10px;font-weight:700}
+.plan h3{margin:0 0 4px;font-size:16px;font-weight:600}
+.plan .price{font-size:32px;font-weight:700;letter-spacing:-.03em;margin:10px 0 2px;color:#c9ffe9}
+.plan .price small{font-size:12px;color:var(--dim);font-weight:400;letter-spacing:0}
+.plan ul{margin:14px 0 18px;padding:0 0 0 2px;list-style:none;display:grid;gap:8px}
+.plan li{font-size:12px;color:var(--muted);padding-left:20px;position:relative}
+.plan li:before{content:"✓";position:absolute;left:0;color:var(--mint)}
+.buy{width:100%;border:0;border-radius:13px;padding:13px;font-weight:600;cursor:pointer;color:#03120c;
+  background:linear-gradient(135deg,#14e6a6,#0fb5d6);box-shadow:0 8px 26px rgba(20,230,166,.22);transition:all .3s;font-size:13px}
+.buy:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(20,230,166,.35)}
+.buy:disabled{opacity:.45;transform:none;cursor:default}
+.qty{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:11px;color:var(--dim)}
+.qty input{width:64px;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:9px;padding:7px 9px;color:var(--ink);outline:none}
+.email{margin:22px 0 4px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.email input{flex:1;min-width:240px;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:13px;padding:12px 14px;color:var(--ink);outline:none;transition:border-color .3s,box-shadow .3s}
+.email input:focus{border-color:rgba(20,230,166,.55);box-shadow:0 0 0 4px rgba(20,230,166,.12)}
+.email span{font-size:11px;color:var(--dim)}
+
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.feat{padding:20px;border:1px solid var(--line);border-radius:20px;background:var(--glass);transition:transform .3s,border-color .3s}
+.feat:hover{transform:translateY(-4px);border-color:var(--line2)}
+.feat i{display:grid;place-items:center;width:40px;height:40px;border-radius:13px;font-style:normal;font-size:16px;
+  background:linear-gradient(135deg,rgba(20,230,166,.22),rgba(15,181,214,.15));border:1px solid var(--line2);color:var(--mint)}
+.feat b{display:block;margin:12px 0 4px;font-size:13.5px;font-weight:600}
+.feat span{font-size:11.5px;color:var(--muted)}
+
+.integrity{margin-top:22px;padding:20px 24px;border:1px dashed rgba(20,230,166,.4);border-radius:16px;font-size:12px;color:var(--muted);background:rgba(20,230,166,.04)}
+.integrity b{color:#c9ffe9}
+
+.foot{margin-top:60px;border-top:1px solid var(--line);padding:30px 0 46px;text-align:center;color:var(--dim);font-size:11.5px}
+.foot b{color:var(--muted)}
+
+@media(max-width:900px){.plans{grid-template-columns:1fr}.feats{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.topbar{height:62px}.right .pill{display:none}.feats{grid-template-columns:1fr}.compare div{min-width:100%}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<span class="badge">Powered by ABBA &middot; Institute GPT</span>
-<h1>Your CIBN journey.<br><span>At your pace.</span> Intelligently tailored to you.</h1>
-<p class="sub">A personalized AI companion for the Chartered Institute of Bankers of Nigeria — whether you're not yet a member, a student member mid-programme, or counting down to a diet.</p>
+<div class="aura"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
+<div class="gridlines"></div>
 
-<div class="alert">🎓 <b>October 2026 diet is coming.</b> MCP candidates — Microfinance I &amp; II — start now. Free trial mock inside.</div>
+<div class="top"><div class="wrap topbar">
+  <a class="brand" href="https://noun-student-bot-dashboard.vercel.app/"><span class="mark">C</span>CIBN BOT</a>
+  <div class="right"><span class="pill">A product of Institute GPT · Powered by ABBA</span><a class="wa" href="https://wa.me/2347046481828" target="_blank" rel="noopener">WhatsApp →</a></div>
+</div></div>
 
-<div class="feat">
-<div class="f"><b>Tailored to your stage</b><small>Not registered yet? We walk you through student membership and exam registration, hands on. Mid-ACIB? We track your papers. MCP this diet? Full mock season.</small></div>
-<div class="f"><b>At your pace</b><small>Self-study sprint or steady weekly coaching — your plan adapts to your schedule, not the other way round.</small></div>
-<div class="f"><b>Built on real past diets</b><small>We prep you with actual CIBN past questions and suggested solutions from official Examiners' Reports — plus what examiners said about where candidates lose marks.</small></div>
-<div class="f"><b>Old + new syllabus aware</b><small>MCP has moved: MF 101-103 (old) to MF 301-404 (new). We tell you exactly which courses apply to you and what changed.</small></div>
-<div class="f"><b>Handouts, handled</b><small>CIBN's bookshop and study packs are tricky to navigate. We guide you to exactly the right official materials for your papers.</small></div>
-<div class="f"><b>Every CIBN programme</b><small>MCP, ACIB (Diploma, Intermediate, Chartered Banker), specialized certifications — and we track the 4 diets a year: February, April, July, October.</small></div>
-</div>
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow rv"><i></i>October 2026 diet · Registration open</div>
+    <h1 class="rv d1">Your CIBN journey,<br>at your pace.</h1>
+    <p class="rv d2">CIBN BOT walks with you from registration to results: full-diet mock exams, personal coaching, concierge handling of registration and materials, and a proctoring-ready check for the remote exam room. Intelligently tailored to you.</p>
+    <div class="hero-actions rv d3">
+      <button class="cta primary" onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})">Get the Pass Package — ₦30,000</button>
+      <a class="cta ghost" href="https://wa.me/2347046481828" target="_blank" rel="noopener">Talk to us on WhatsApp</a>
+    </div>
 
-<h2>Beyond the exam</h2>
-<div class="card"><h3>Your CIBN career, not just your diet</h3><p>CIBN is a career institution — student membership, CCPD points, mentoring, linkage programmes (MSc/ACIB routes), practice license, and the prestigious Chartered Banker status. ABBA keeps your whole journey on one plan — where you are, what's next, and what it takes to get there.</p></div>
-<div class="card"><h3>We never cross the line</h3><p>We coach you to pass on merit — never write exams or TMA-equivalents for you. Integrity is the brand.</p></div>
+    <div class="alert rv d4"><span class="dot"></span><div><b>Time matters this diet.</b> The October 2026 examination holds on <b>October 6–7</b> on a remote online proctoring platform, and registration typically closes about three weeks before each diet. Register first — then prepare with us. Every week you wait is a week of preparation gone.</div></div>
+  </section>
 
+  <section class="card pitch rv">
+    <span class="kicker">The one-diet strategy</span>
+    <h2>ALL SIX COURSES.<br><em>ONE DIET.</em> HALF THE BRANCH PRICE.</h2>
+    <p>The MCP examination is six courses — three in Accreditation I, three in Examination II. You can sit all six in a single diet, and that changes everything: one registration, one season of preparation, one finish line. Our Pass Package covers all six for less than half of what branch classes charge for lectures alone.</p>
+    <div class="compare">
+      <div><small>CIBN Lagos branch classes</small><b>₦65,000</b><span>₦10,000/subject × 6 + ₦5,000 registration — lectures only</span></div>
+      <div class="win"><small>CIBN BOT Pass Package</small><b>₦30,000</b><span>All 6 courses: mocks, coaching, concierge, proctoring prep, alerts, appeal support</span></div>
+      <div><small>CIBN exam fee (all candidates)</small><b>₦32,500</b><span>Paid directly to CIBN — the same for every route</span></div>
+    </div>
+  </section>
 
-<h2>Plans that pay for themselves</h2>
-<div class="feat">
-<div class="f"><b>M_trial — Free</b><small>Deadline alerts, basic topic help, 1 trial mock. Your arrival hook.</small></div>
-<div class="f"><b>Mock Season — 1 course &middot; &#8358;3,500</b><small>Full practice bank + timed mocks + weak-topic feedback for any single paper (MF 301&ndash;404).</small></div>
-<div class="f"><b>Mock Season — Full diet &middot; &#8358;15,000</b><small>All your courses this diet, examiners'-report insights, plus a readiness score before you sit. The pass-protection package.</small></div>
-<div class="f"><b>Registration &amp; Materials Concierge &middot; &#8358;5,000</b><small>Student membership, exam registration and the right official handouts — done with you, first time right.</small></div>
-<div class="f"><b>B2B — Per-staff bundle &middot; &#8358;12,500</b><small>For microfinance bank HR: cohorts of 5+ get 20% off. Registration + mock season + coaching for each staff member.</small></div>
-<div class="f"><b>Coaching &middot; &#8358;5,000/course <s>&#8358;10,000</s> — you save &#8358;5,000</b><small>Live sessions tuned to your pace — integrity-first, we coach, we never write.</small></div>
-</div>
-<div class="card"><h3>How you pay</h3><p>Chat with ABBA on WhatsApp — pick your plan, get a secure Stripe payment link instantly (card), or a bank transfer if you prefer. Access opens the moment your payment lands.</p></div>
+  <div class="stats rv d2">
+    <div class="stat"><b>4</b><span>exam diets every year (Feb · Apr · Jul · Oct)</span></div>
+    <div class="stat"><b>6 in 1</b><span>six MCP courses, one sitting, one diet</span></div>
+    <div class="stat"><b>Remote</b><span>online proctoring — no exam hall travel</span></div>
+    <div class="stat"><b>1:1</b><span>coaching per course, tailored to your pace</span></div>
+  </div>
 
-<a class="cta" href="https://wa.me/2347046481828?text=Hi%20CIBN%20BOT%2C%20I%20want%20to%20start%20my%20exam%20prep">Start on WhatsApp — free trial mock</a>
+  <div class="sechead rv" id="plans">
+    <span class="kicker">Choose your route</span>
+    <h2>Pick a plan. Start today.</h2>
+    <div class="email"><input id="email" type="email" placeholder="Email for your receipt (optional)"><span>Prices in Naira. Nothing else charged.</span></div>
+  </div>
 
-<footer><b>CIBN BOT</b> — a product of <b>Institute GPT</b>, powered by <b>ABBA</b>. Not affiliated with CIBN; an independent study companion.</footer>
-</div>
+  <div class="plans">
+    <div class="card plan feature rv">
+      <span class="tag">Best value</span>
+      <h3>PASS PACKAGE — all 6 courses, one diet</h3>
+      <div class="price">₦30,000 <small>one-time, everything included</small></div>
+      <ul>
+        <li>Full-diet mock exams across all six courses</li>
+        <li>Personal coaching for all six courses (branch charges ₦60,000 for lectures alone)</li>
+        <li>Registration &amp; materials concierge</li>
+        <li>Proctoring-ready check + exam-day runsheet</li>
+        <li>Deadline alerts through the diet</li>
+        <li>Results tracking &amp; appeal support</li>
+      </ul>
+      <button class="buy" onclick="buy('pass_package',1)">Get the Pass Package — ₦30,000</button>
+    </div>
+
+    <div class="card plan rv d1">
+      <h3>Coaching — per course</h3>
+      <div class="price">₦5,000 <small>per course</small></div>
+      <ul><li>Guided coaching tailored to your pace</li><li>Branch classes charge ₦10,000 — you save ₦5,000</li><li>Take one course or all six</li></ul>
+      <div class="qty">Courses: <input id="qty_coaching" type="number" min="1" max="6" value="1"></div>
+      <button class="buy" onclick="buy('coaching_1',document.getElementById('qty_coaching').value||1)">Start coaching</button>
+    </div>
+
+    <div class="card plan rv d2">
+      <h3>Mock Season</h3>
+      <div class="price">₦15,000 <small>full diet, all courses</small></div>
+      <ul><li>Full-diet mocks with scoring and review</li><li>Single course: ₦3,500</li><li>Practice under real exam conditions</li></ul>
+      <button class="buy" onclick="buy('mock_full',1)">Mock the full diet — ₦15,000</button>
+      <button class="buy" style="margin-top:10px;background:var(--glass);border:1px solid var(--line);color:var(--ink)" onclick="buy('mock_single',1)">One course — ₦3,500</button>
+    </div>
+
+    <div class="card plan rv d3">
+      <h3>Registration &amp; Materials Concierge</h3>
+      <div class="price">₦5,000 <small>one-time</small></div>
+      <ul><li>We handle your diet registration properly</li><li>Source and organise your study materials</li><li>Never miss a portal deadline</li></ul>
+      <button class="buy" onclick="buy('reg_concierge',1)">Hand it over — ₦5,000</button>
+    </div>
+
+    <div class="card plan rv d4">
+      <h3>For banks &amp; teams (B2B)</h3>
+      <div class="price">₦25,000 <small>per staff member</small></div>
+      <ul><li>Pass Package benefits for your staff</li><li>20% off for teams of 5 or more</li><li>Batch registration and progress reporting</li></ul>
+      <div class="qty">Staff: <input id="qty_b2b" type="number" min="1" max="100" value="5"></div>
+      <button class="buy" onclick="buy('b2b_staff',document.getElementById('qty_b2b').value||5)">Equip my team</button>
+    </div>
+  </div>
+
+  <div class="sechead rv"><span class="kicker">What's inside</span><h2>Built for this diet.</h2></div>
+  <div class="feats">
+    <div class="feat rv"><i>◈</i><b>Full-diet mocks</b><span>Every course, exam-condition practice, scored and reviewed before the real thing.</span></div>
+    <div class="feat rv d1"><i>◉</i><b>Personal coaching</b><span>Topic by topic, at your pace — from first principles to exam technique.</span></div>
+    <div class="feat rv d1"><i>◎</i><b>Concierge</b><span>Registration, materials, handouts — handled, so your time goes to studying.</span></div>
+    <div class="feat rv d2"><i>✦</i><b>Proctoring-ready check</b><span>Room scan rehearsal, camera and lighting check, power-cut plan — exam day holds no surprises.</span></div>
+    <div class="feat rv d2"><i>◔</i><b>Deadline alerts</b><span>Registration windows, docket dates, exam dates — pushed to you before they close.</span></div>
+    <div class="feat rv d3"><i>↗</i><b>Results &amp; appeal support</b><span>After the diet: results tracking, appeal checks and a rescue resit plan if needed.</span></div>
+  </div>
+
+  <div class="integrity rv"><b>Our integrity line:</b> we coach, guide and support you to pass on your own merit. We never write, take, or sit any exam for you. That is not a disclaimer — it is the entire point of education.</div>
+
+  <div class="foot">CIBN BOT is a product of <b>Institute GPT</b>, powered by <b>ABBA</b>.<br>Study support service — CIBN examination fees are paid directly to CIBN.<br>Questions? <a href="https://wa.me/2347046481828" style="color:var(--mint)">WhatsApp: wa.me/2347046481828</a></div>
+</main>
+
+<script>
+document.querySelectorAll('.rv').forEach(el=>setTimeout(()=>el.classList.add('in'),90));
+const PLANS={pass_package:'Pass Package',coaching_1:'Coaching',mock_full:'Mock Season (full diet)',mock_single:'Mock Season (1 course)',reg_concierge:'Concierge',b2b_staff:'B2B Pass Bundle'};
+async function buy(plan,qty){
+  const btn=event.target;const label=btn.textContent;btn.disabled=true;btn.textContent='Preparing checkout…';
+  try{
+    const r=await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({plan,quantity:parseInt(qty)||1,email:document.getElementById('email').value||''})});
+    const d=await r.json();
+    if(!d.ok||!d.checkout_url)throw new Error(d.error||'Checkout unavailable');
+    btn.textContent='Opening secure checkout…';location.href=d.checkout_url;
+  }catch(e){btn.disabled=false;btn.textContent=label;alert('Could not open checkout: '+e.message+' — reach us on WhatsApp 0704 648 1828.')}
+}
+</script>
 </body>
 </html>
