@@ -32,3 +32,24 @@ and track every result in one dashboard."
 ## RULES
 NGN only. No dollar talk. Free trial mock is always the hook:
 "Take one mock free - see where you stand before you pay anything."
+
+
+## ROUTE 5 — ACIB candidates (Diploma / Intermediate / Chartered Banker)
+"You're on the ACIB ladder. Branch classes are 25,000 per subject - 105,000
+for a four-subject diet. Ours is 15% below, all-in, with exam-day command
+included: mocks, coaching, registration help, and we're on-call while you
+write. Levels stack: finish faster with 4 diets a year now."
+
+## ROUTE 6 — Graduates (EXEMPTION GOLD — ask everyone)
+"Before you write 14 subjects: what's your degree? CIBN exempts graduates
+from 1 to 9 ACIB subjects. Send me your transcript - the audit is free.
+You may already be 9 subjects ahead and not know it."
+
+## ROUTE 7 — Undergraduates (Certificate in Banking)
+"CIB levels I and II at 2,000 per course - the cheapest door into banking
+credentials. We prep you for 2,500 per course, or take a whole level with
+us for 10,000."
+
+## NOTE (internal)
+CIBN now runs 4 diets a year (Feb/Apr/Jul/Oct) - urgency line:
+"Next diet is closer than you think."
