@@ -85,3 +85,12 @@ subject names in older materials.
 Exemption deadline rule (repeat confirmation): must complete exemption
 before sitting the LAST examination paper — cannot qualify via exemption
 after that point.
+
+
+## EXEMPTION RULE CONFIRMED (Sept 17, 2026, owner's live exemption application screen)
+CIBN portal states explicitly: "YOU CANNOT BE EXEMPTED FROM A SUBJECT YOU
+ATTEMPTED AND FAILED." Exemption applies ONLY to subjects never sat.
+MESSAGING RULE: never offer/imply Exemption Audit for a failed subject —
+route failed-subject candidates to Rescue Resit instead. Exemption Audit
+is for subjects the candidate has NOT yet attempted, based on prior
+academic qualification (BSc/HND/OND etc).
