@@ -114,3 +114,22 @@ PRICING STATUS: NOT PRICED — zero verified exam fees for this track.
 Do NOT invent EPP prices. Awaiting owner confirmation of exam fees
 (0700-DIAL-CIBN or portal course-selection totals) before applying the
 coaching/Pass Package formula used elsewhere in the ecosystem.
+
+
+## AGENCY BANKING PROGRAMME (CAB) DISCOVERED (Sept 17, 2026, owner's live registration screen)
+NEW track — separate from ACIB/MCP/CIB/Certifications/EPP. Same Oct 2026
+diet, Remote Online Proctoring Platform, Private Study Only, Naira.
+CAB1 (4 courses): CAB101 Agency Banking Law & Regulations | CAB102
+Customer Service & Agency Banking Relationship Mgt | CAB103 Financial
+Inclusion | CAB104 Operating Models, Channels & Services
+CAB2 (4 courses): CAB201 Entrepreneurship & Innovation | CAB202
+Contemporary Issues in Agency Banking | CAB203 Risk, Control &
+Reconciliation | CAB204 Digital Financial Services
+CAB3 (4 courses): CAB301 Ethics, Corporate Governance & Professionalism |
+CAB302 Micro & SME Finance | CAB303 Agency Performance Management |
+CAB304 Experiential Learning/Multi-Disciplinary Case Study
+Total 12 courses across 3 levels. PRICING STATUS: NOT PRICED — zero
+verified exam fees. Do not invent prices; awaiting owner confirmation.
+ECOSYSTEM NOW KNOWN: ACIB (3 levels) + MCP (6 courses) + CIB (undergrad)
++ Certifications (17 areas) + Exemption lane + E-Payments (EPP, 2+ levels)
++ Agency Banking (CAB, 3 levels) = 7 distinct certification tracks total.
