@@ -48,7 +48,11 @@ Wallet math above EXCLUDES materials; if bookshop purchases are needed,
 they add to CIBN's wallet and STRENGTHEN our concierge value (we source and
 organize the right materials either way). Never promise free materials.
 
-## NET-TO-ABBA per candidate (after ~3-4% Stripe processing)
-MCP all-6: ~52,500 | ACIB 4-subject: ~85,000 | Cert Pass: ~24,000
-CIB Level: ~9,600 | Exemption filing: ~9,600
+## NET-TO-ABBA per candidate (post-Flutterwave switch, Sept 17)
+Processing is now NGN-direct via Flutterwave (~1.5% local, vs Stripe's
+3-4% + FX spread). No USD layer exists anymore (ONE-PRICE policy).
+MCP all-6: ~54,400 | ACIB 4-subject: ~87,900 | Cert Pass: ~24,600
+CIB Level: ~9,850 | Exemption filing: ~9,850
 B2B (per staff, 5+): 25,000 list -> 20,000 net of bulk discount.
+Figures assume ~1.5% Flutterwave NGN fee; verify exact fee on the
+Flutterwave dashboard once the account is live.
