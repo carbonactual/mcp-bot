@@ -1,0 +1,15 @@
+{
+  "product": "MCP BOT",
+  "version": "1.0.0",
+  "status": "canonical-product-contract",
+  "repository": "carbonactual/mcp-bot",
+  "parent_product": "carbonactual/institutegpt",
+  "domain": "education-assistance-and-certification-prep",
+  "canonical_operating_spine": "carbonactual/carbonactual",
+  "constitutional_authority": "carbonactual/hapi-world/CANON.md",
+  "orchestration": "carbonactual/abba",
+  "facets": ["identity", "authority", "intent", "capability", "event", "evidence", "state"],
+  "boundary": "Specialized education workflows only; no competing universal primitive or constitutional authority.",
+  "financial_boundary": "Educational explanation and preparation may cover financial concepts; actual financial execution requires the applicable authorized financial system.",
+  "provider_rule": "External AI, messaging, search, storage, media and API providers are replaceable adapters."
+}
