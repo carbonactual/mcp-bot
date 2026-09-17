@@ -53,3 +53,35 @@ interprets for candidates who don't know to look for it.
 POTENTIAL CASE STUDY (owner decision pending): owner's own account shows
 2-3 subjects pre-exempted — an honest, real "I didn't know I was already
 exempted" angle for the audit funnel, if owner approves using it.
+
+
+## ACIB FULL COURSE MAP CONFIRMED (Sept 17, 2026, owner's live registration screen)
+DIPLOMA LEVEL (NEW) — 4 courses, all mandatory:
+601 Economics of Banking & Finance | 602 Customer Service & Relationship
+Management | 603 Banking Law and Regulation | 604 Ethics, Corporate
+Governance & Professionalism
+
+INTERMEDIATE PROFESSIONAL LEVEL (NEW) — 4 courses, all mandatory:
+701 Digital Banking | 702 Enterprise Risk Management | 703 Fintech |
+704 Finance in the Global Market
+(fee schedule already verified: 15,000/22,500/30,000/37,500 for 1-4 subjects)
+
+CHARTERED BANKER LEVEL (NEW) — 4 mandatory + elective pool:
+Mandatory: 801 Corporate Financial Services | 802 Bank Management and
+Strategy | 803 Lending and Credit Management | 804 Applied Banking
+Elective pool (marked * on portal, pick required number — exact pick
+count not yet confirmed): 805 Bank Audit & Compliance | 806 Agency
+Banking | 807 Infrastructure Finance | 808 SME's Finance | 809
+Agricultural & Rural Banking | 810 Human Resource Management | 811
+Central Banking/Deposit Insurance System | 812 Public Sector Finance |
+813 Experiential Learning Module
+
+STILL UNVERIFIED: exact exam fees for Diploma and Chartered Banker levels
+(only Intermediate's 15k-37.5k schedule is confirmed) — need CIBN
+confirmation before quoting ACIB Diploma/Chartered Banker journey totals.
+NOTE: portal shows an "old subjects to new" mapping link — CIBN appears
+to have recently revised the syllabus/course codes; be alert for legacy
+subject names in older materials.
+Exemption deadline rule (repeat confirmation): must complete exemption
+before sitting the LAST examination paper — cannot qualify via exemption
+after that point.
