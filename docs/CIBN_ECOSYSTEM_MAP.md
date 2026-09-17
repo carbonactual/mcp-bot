@@ -133,3 +133,16 @@ verified exam fees. Do not invent prices; awaiting owner confirmation.
 ECOSYSTEM NOW KNOWN: ACIB (3 levels) + MCP (6 courses) + CIB (undergrad)
 + Certifications (17 areas) + Exemption lane + E-Payments (EPP, 2+ levels)
 + Agency Banking (CAB, 3 levels) = 7 distinct certification tracks total.
+
+
+## PUBLIC EXEMPTION CHECKER CONFIRMED (Sept 17, 2026, exemption.cibng.org)
+CIBN runs a public tool at exemption.cibng.org with a "Non Members"
+path: "This platform will advise you on the probable exemption subjects"
+— usable BEFORE joining CIBN as a member. States: "Exemption Application
+is only applicable to the members who wish to sit for the Banking
+Professional Examinations" (i.e. MCP-track exemption specifically;
+members-only formal application still requires login).
+FUNNEL UPGRADE: our free Exemption Audit can literally run this public
+tool for a prospect pre-membership, interpret the result, then upsell
+the Filing Concierge once they register. Strengthens "check before you
+spend a naira" positioning with a real CIBN-backed mechanism.
