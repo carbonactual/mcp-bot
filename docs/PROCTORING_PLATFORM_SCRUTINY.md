@@ -23,8 +23,15 @@ VERIFY against CIBN's official guideline PDF before publishing claims):
 - Electronic devices strictly banned; misconduct monitored live
 - TEN-YEAR RULE: candidates must complete the qualification within 10 years
   to retain eligibility and records
-- FREE soft copies of study manuals for registered students (concierge pitch
-  shifts: manuals are free but buried; we locate + organize them)
+- STUDY MANUALS: the instructions CLAIM registered students can access
+  soft copies free via member login. OWNER DOUBT (Sept 17, sustained):
+  this line exists ONLY in the secondary studocu mirror - no official CIBN
+  page confirms free materials, and CIBN operates a paid Bookshop
+  (portal.cibng.org: 'view and purchase books online'). TREAT AS
+  UNVERIFIED. Never advertise 'free manuals.' Concierge pitch: 'we locate
+  and organize whatever materials CIBN makes available - downloads,
+  bookshop purchases, past questions - so you study the right sources.'
+  Verify with 0700-DIAL-CIBN before any materials claim.
 - Registration deadline pattern: Feb 2026 diet closed Jan 19, 2026 5pm
   (~3 weeks pre-diet). => OCTOBER DIET REGISTRATION LIKELY CLOSES MID/LATE
   SEPTEMBER 2026 - CAMPAIGN URGENCY. Confirm exact date with CIBN before
