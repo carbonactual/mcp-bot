@@ -18,3 +18,19 @@ ACIB (proposals): coach 12,500 | mock 7,500 | pass_2 27,500 | pass_3
 CERT pass 25,000 | CIB: coach 2,500 / mock 1,500 / level 10,000
 EXEMPTION: audit FREE | filing 10,000
 *** FREEZE IN EFFECT on pricing changes until owner says GO. ***
+
+
+## CONFIRMED LIVE (Sept 17, 2026) — owner's own CIBN portal screenshot
+- October 2026 diet EXAM REGISTRATION FEE: 32,500 NGN — CONFIRMED via
+  owner's live portal.cibng.org registration screen (not scraped text).
+  This resolves the earlier flag ('legacy 2,500/course vs current 8,750
+  schedule') — the real current figure is 32,500 flat for the diet.
+- October 2026 diet registration window is OPEN NOW (owner mid-registration
+  at time of screenshot) — real-time urgency confirmed for campaign copy.
+- CIBN's own payment processor is Paystack; adds ~1.8% transaction fee on
+  top (32,500 -> 33,096.45 shown on owner's screen). CIBN wallet math
+  should account for buyer-side friction on THEIR end (not ours).
+- Membership status shown as 'Active Member' separately from exam
+  registration — confirms 10,000 membership fee is a one-time, separate
+  cost from the per-diet 32,500 exam fee. Journey math (42,500 = 10k + 32.5k)
+  now fully account-verified, both line items.
