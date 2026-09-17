@@ -38,3 +38,18 @@ EXEMPTION LANE (the sleeper funnel — most graduates don't know):
 - Exemption Audit: FREE check ("you may already be 9 subjects ahead"),
   filing concierge 10,000. Feed: BSc/HND/MSc holders -> ACIB route.
 - Exam-Day Command Service (shared, all programmes): 19,250
+
+
+## PORTAL CONFIRMATION (Sept 17, 2026, owner's own dashboard screenshot)
+CIBN portal "My Applications" tile grid confirms our ecosystem split is
+structurally correct — separate tiles exist for: ACIB Examination,
+Microfinance Examination (=MCP), Certification Examination, Exemption
+Application, Check Result, Digital ID Card, e-Payments Confirmation.
+LIVE FEATURE CONFIRMED: dashboard shows "Proposed Exemptions Applicable
+Based on Your Qualification" — a table CIBN auto-generates per member
+showing which subjects their qualification exempts, with a fee total.
+This is the exact mechanic our free Exemption Audit service mirrors/
+interprets for candidates who don't know to look for it.
+POTENTIAL CASE STUDY (owner decision pending): owner's own account shows
+2-3 subjects pre-exempted — an honest, real "I didn't know I was already
+exempted" angle for the audit funnel, if owner approves using it.
