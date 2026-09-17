@@ -166,3 +166,16 @@ Fintech, 704 Finance in the Global Market) = TOTAL EXAM FEE 87,250.00 NGN.
 Per-course average ~21,812. Do not use the old 15k-37.5k figures anywhere.
 ACIB fee status now: Diploma 41,000 confirmed / Intermediate 87,250
 confirmed / Chartered Banker still unverified.
+
+
+## AGENCY BANKING (CAB) FEE CONFIRMED (Sept 17, 2026, owner-read total)
+3 selected courses (CAB104 Operating Models Channels & Services, CAB201
+Entrepreneurship & Innovation, CAB301 Ethics Corporate Governance &
+Professionalism) = TOTAL 20,700 NGN (owner read the figure directly).
+Per-course average ~6,900 NGN. Owner stress: IMPORTANT — has a call today
+with the chairman of their bank (CAB is the track most relevant to bank
+staff B2B: agency banking is the PO/Banking-Agent business line).
+Note: earlier CAB selection screen showed an exam-time CLASH warning on
+this combination — the 20,700 figure is the total owner confirmed; if
+combination changes, total may change. Per-course rate is the safer unit
+for B2B quoting until a clean full-level total is confirmed.
