@@ -8,8 +8,10 @@ institute — ABBA money never routes through CIBN and vice versa.
 - ABBA wallet: 36,000 Pass + 19,250 Exam-Day Command = 55,250
 - Branch comparison: 65,000 prep -> ours 15% below
 - ABBA net after Stripe processing (~3-4%): ~52,500
-- Flag: legacy portal shows +2,500 exam registration; if still charged,
-  CIBN wallet = 45,000. Confirm with 0700-DIAL-CIBN before ad claims.
+- RESOLVED (Sept 17, owner's live portal screenshot): exam fee = 32,500
+  flat for the October 2026 diet, CONFIRMED account-side. No separate
+  2,500 registration on top of this — CIBN wallet = 42,500 total
+  (10,000 membership, one-time + 32,500 exam fee, per diet) is verified.
 
 ## ACIB INTERMEDIATE (verified fee table; proposals from owner formula)
 Candidate pays CIBN per diet (subjects: exam fee):
