@@ -1,24 +1,24 @@
-# CIBN BOT Pricing — FINAL v4 (owner-set, Sept 17, 2026)
-LOGIC: genuine MCP candidate volume is low - revenue must come from VALUE
-PER CANDIDATE, not volume. Premium tier justified: we cover registration,
-materials, prep, AND the remote-proctoring logistics nobody else touches.
+# CIBN BOT Pricing — FINAL v5 (owner-set, Sept 17, 2026)
+OWNER RULING: packages are SITUATION-BASED. It depends on whether the
+candidate wants the first 3 (Level One), all 6 (both levels, one diet), or
+is making up FAILED courses (resit).
 
-- PASS PACKAGE: 40,000 NGN (owner ruled journey total = 82,500).
-  Covers ALL 6 COURSES IN ONE DIET: full-diet mocks + coaching all 6 +
-  concierge + free add-ons (proctoring-ready check, exam-day runsheet,
-  alerts, appeal support).
-  THE HEADLINE MATH (verified figures):
-    ABBA route: 10,000 membership + 32,500 exam fees + 40,000 Pass = 82,500
-    Branch route: 10,000 + 32,500 + 65,000 branch prep = 107,500
-    => "82,500 all-in. The branch route costs 107,500 and leaves you
-       alone on exam day."
-  Branch prep alone (65,000) vs our Pass (40,000): we undercut them by
-  25,000 AND include proctoring prep they never offer.
+THE LADDER:
+1. PASS PACKAGE — LEVEL ONE (3 courses): 25,000 NGN
+   mocks for 3 + coaching 3 + concierge + all free add-ons.
+   Branch route for 3 subjects: 10k reg + 30k classes = 35,000 -> we are
+   10,000+ below, with more included.
+2. PASS PACKAGE — ALL 6 (one diet): 40,000 NGN (unchanged)
+   Journey 82,500 all-in vs 107,500 branch. Upsell line: only 15,000 more
+   than Level One - finish everything this diet (6,667/course vs
+   8,333/course at Level One).
+3. RESCUE RESIT — per FAILED course: 7,500 NGN
+   mock + coaching + examiners'-report autopsy (why you lost marks) +
+   APPEAL CHECK FIRST: CIBN's official Examination Appeal Process exists -
+   don't resit a borderline result you can appeal. Results & appeal
+   support included.
 
-- Coaching: 5,000 NGN per course (savings label vs branch 10,000)
-- Concierge: 5,000 NGN
-- Mock Season: 3,500 (1 course) / 15,000 (full diet)
-- B2B per-staff Pass Bundle: 25,000 NGN, 20% off 5+ (proposal - MFB route
-  is where the volume actually is; HR pays per staff, 4 diets/year)
-NGN only in all candidate-facing copy. Checkout createMcpCheckout matches
-(pass_package 40,000). USD internal only.
+UNCHANGED: coaching 5,000/course (save-5k label), concierge 5,000,
+mocks 3,500 / 15,000, B2B 25,000/staff (20% off 5+).
+Checkout createMcpCheckout: plans pass_3 (25k), pass_6 (40k), resit_1 (7.5k).
+NGN only in candidate-facing copy; USD internal to Stripe.
