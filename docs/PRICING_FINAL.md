@@ -1,24 +1,17 @@
-# CIBN BOT Pricing — FINAL v5 (owner-set, Sept 17, 2026)
-OWNER RULING: packages are SITUATION-BASED. It depends on whether the
-candidate wants the first 3 (Level One), all 6 (both levels, one diet), or
-is making up FAILED courses (resit).
+# CIBN BOT Pricing — FINAL v6 (owner-set, Sept 17, 2026)
+OWNER RULING: ladder reduced 10%, then ALL UPDATES FROZEN until owner
+says GO. No further pricing, checkout, or landing changes before that.
 
-THE LADDER:
-1. PASS PACKAGE — LEVEL ONE (3 courses): 25,000 NGN
-   mocks for 3 + coaching 3 + concierge + all free add-ons.
-   Branch route for 3 subjects: 10k reg + 30k classes = 35,000 -> we are
-   10,000+ below, with more included.
-2. PASS PACKAGE — ALL 6 (one diet): 40,000 NGN (unchanged)
-   Journey 82,500 all-in vs 107,500 branch. Upsell line: only 15,000 more
-   than Level One - finish everything this diet (6,667/course vs
-   8,333/course at Level One).
-3. RESCUE RESIT — per FAILED course: 7,500 NGN
-   mock + coaching + examiners'-report autopsy (why you lost marks) +
-   APPEAL CHECK FIRST: CIBN's official Examination Appeal Process exists -
-   don't resit a borderline result you can appeal. Results & appeal
-   support included.
+THE LADDER (post 10% reduction):
+1. PASS PACKAGE — LEVEL ONE (3 courses): 22,500 NGN (was 25,000)
+2. PASS PACKAGE — ALL 6 (one diet): 36,000 NGN (was 40,000)
+   Journey all-in: 10,000 + 32,500 + 36,000 = 78,500 (vs 107,500 branch).
+   Upsell: only 13,500 more than Level One (was 15,000).
+3. RESCUE RESIT — per failed course: 6,750 NGN (was 7,500)
+   mock + coaching + examiners-report autopsy + appeal check first.
 
-UNCHANGED: coaching 5,000/course (save-5k label), concierge 5,000,
-mocks 3,500 / 15,000, B2B 25,000/staff (20% off 5+).
-Checkout createMcpCheckout: plans pass_3 (25k), pass_6 (40k), resit_1 (7.5k).
+UNCHANGED: coaching 5,000/course, concierge 5,000, mocks 3,500/15,000,
+B2B 25,000/staff (20% off 5+).
+Checkout createMcpCheckout: pass_3 22,500 / pass_6 36,000 / resit_1 6,750.
 NGN only in candidate-facing copy; USD internal to Stripe.
+*** FREEZE IN EFFECT: no updates until owner says GO. ***
