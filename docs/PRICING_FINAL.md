@@ -51,3 +51,20 @@ free Exemption Audit funnel — audit early, not late.
 Exact October 2026 exam dates: image resolution insufficient to read
 reliably — NOT publishing unverified dates per research-first rule.
 Awaiting owner confirmation or clearer read.
+
+
+## OCTOBER 2026 DIET EXAM DATES CONFIRMED (Sept 17, 2026, owner's live payment-detail screen)
+Exam dates: OCTOBER 6-7, 2026 (both days), remote online proctoring.
+Examination Center field literally reads: "REMOTE ONLINE PROCTORING
+PLATFORM" — confirms no physical venue exists for this diet, universal
+remote sitting.
+Registration fee line item = 0.00 — confirms the 32,500 total is 100%
+exam fee, no separate registration charge layered on top. TOTAL EXAM FEE
+= 32,500.00 (re-confirmed, consistent with prior screenshot).
+Individual paper times shown (9AM-12PM / 2PM-5PM slots across the two
+days) are on the owner's screen but small print — use the two confirmed
+DATES (Oct 6-7) for campaign urgency; verify exact per-paper times with
+the owner before publishing a detailed timetable.
+CAMPAIGN IMPLICATION: registration for this diet is open NOW (confirmed
+prior screenshot) with the exam itself just weeks away (Oct 6-7) —
+strongest urgency window we've had for any CIBN content.
