@@ -146,3 +146,13 @@ FUNNEL UPGRADE: our free Exemption Audit can literally run this public
 tool for a prospect pre-membership, interpret the result, then upsell
 the Filing Concierge once they register. Strengthens "check before you
 spend a naira" positioning with a real CIBN-backed mechanism.
+
+
+## ACIB DIPLOMA FEE CONFIRMED (Sept 17, 2026, owner's live registration screen, clearly legible)
+Diploma Level (601 Economics of Banking & Finance, 602 Customer Service &
+Relationship Management, 603 Banking Law and Regulation, 604 Ethics,
+Corporate Governance & Professionalism) — ALL 4 COURSES:
+TOTAL EXAM FEE = 41,000.00 NGN (confirmed, clearly readable screenshot).
+Per-course average = 10,250.
+Still unverified: Chartered Banker level exact exam fee (structure known:
+4 mandatory + elective pool, but total NGN fee not yet confirmed).
