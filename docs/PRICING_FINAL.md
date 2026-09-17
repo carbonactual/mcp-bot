@@ -1,17 +1,24 @@
-# CIBN BOT Pricing — FINAL v6 (owner-set, Sept 17, 2026)
-OWNER RULING: ladder reduced 10%, then ALL UPDATES FROZEN until owner
-says GO. No further pricing, checkout, or landing changes before that.
+# CIBN BOT Pricing — FINAL v7 (owner-set, Sept 17, 2026)
+OWNER RULING: our TOTAL prep spend lands 10-15% BELOW the branch prep
+total (65,000 = 10k/subject x 6 + 5k reg). The Pass Package stays at the
+v6 ladder; a CHARGEABLE SERVICE closes the gap to the target.
 
-THE LADDER (post 10% reduction):
-1. PASS PACKAGE — LEVEL ONE (3 courses): 22,500 NGN (was 25,000)
-2. PASS PACKAGE — ALL 6 (one diet): 36,000 NGN (was 40,000)
-   Journey all-in: 10,000 + 32,500 + 36,000 = 78,500 (vs 107,500 branch).
-   Upsell: only 13,500 more than Level One (was 15,000).
-3. RESCUE RESIT — per failed course: 6,750 NGN (was 7,500)
-   mock + coaching + examiners-report autopsy + appeal check first.
+THE MATH (all-6 buyer):
+- Branch prep total: 65,000
+- OURS: Pass Package 36,000 + EXAM-DAY COMMAND SERVICE 22,500 = 58,500
+- 58,500 = exactly 10% less than the branch's 65,000
+- Full journey comparison: 42,500 (CIBN fees) + 58,500 = 101,000 vs
+  branch 107,500.
+- 15% variant if owner orders: service becomes 19,250 (total 55,250).
 
-UNCHANGED: coaching 5,000/course, concierge 5,000, mocks 3,500/15,000,
-B2B 25,000/staff (20% off 5+).
-Checkout createMcpCheckout: pass_3 22,500 / pass_6 36,000 / resit_1 6,750.
-NGN only in candidate-facing copy; USD internal to Stripe.
-*** FREEZE IN EFFECT: no updates until owner says GO. ***
+NEW SERVICE — EXAM-DAY COMMAND SERVICE: 22,500 NGN
+  proctoring rehearsal week + secured-browser install check + live
+  on-call support during the paper + results tracking & appeal filing.
+  Positioning: "The branch doesn't sit with you on exam day. We do."
+  This is the make-up service that brings our total to the 10% target.
+
+LADDER UNCHANGED (v6): pass_3 22,500 / pass_6 36,000 / resit_1 6,750;
+coaching 5,000/course; concierge 5,000; mocks 3,500/15,000; B2B
+25,000/staff (20% off 5+).
+Checkout createMcpCheckout: plan exam_command added.
+*** FREEZE IN EFFECT: no further updates until owner says GO. ***
