@@ -156,3 +156,13 @@ TOTAL EXAM FEE = 41,000.00 NGN (confirmed, clearly readable screenshot).
 Per-course average = 10,250.
 Still unverified: Chartered Banker level exact exam fee (structure known:
 4 mandatory + elective pool, but total NGN fee not yet confirmed).
+
+
+## ACIB INTERMEDIATE FEE CORRECTED (Sept 17, 2026, owner's live registration screen, clearly legible)
+SUPERSEDES earlier "15,000/22,500/30,000/37,500 for 1-4 subjects" figure
+(that was wrong/outdated). CONFIRMED live: Intermediate Level, all 4
+courses (701 Digital Banking, 702 Enterprise Risk Management, 703
+Fintech, 704 Finance in the Global Market) = TOTAL EXAM FEE 87,250.00 NGN.
+Per-course average ~21,812. Do not use the old 15k-37.5k figures anywhere.
+ACIB fee status now: Diploma 41,000 confirmed / Intermediate 87,250
+confirmed / Chartered Banker still unverified.
