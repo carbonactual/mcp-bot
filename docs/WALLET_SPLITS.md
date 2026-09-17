@@ -41,6 +41,13 @@ publishing those two levels' journey math.
 - Positioning: 'You may already be 9 subjects ahead.' The audit costs us
   minutes; it wins ACIB Pass sales downstream.
 
+## MATERIALS CAVEAT (owner-flagged, Sept 17)
+The 'free study manuals' claim is UNVERIFIED (secondary source only).
+CIBN runs a paid Bookshop - physical/purchased materials may be required.
+Wallet math above EXCLUDES materials; if bookshop purchases are needed,
+they add to CIBN's wallet and STRENGTHEN our concierge value (we source and
+organize the right materials either way). Never promise free materials.
+
 ## NET-TO-ABBA per candidate (after ~3-4% Stripe processing)
 MCP all-6: ~52,500 | ACIB 4-subject: ~85,000 | Cert Pass: ~24,000
 CIB Level: ~9,600 | Exemption filing: ~9,600
