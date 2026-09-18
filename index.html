@@ -48,6 +48,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .navlinks{display:flex;gap:20px;align-items:center;color:var(--muted);font-size:12px}
 .navlinks a:hover{color:var(--ink)}
 .human{color:var(--green)}
+.nav-human{border:0;background:transparent;color:var(--green);font:inherit;font-size:12px;padding:0;cursor:pointer}
 .account{padding:9px 13px;border:1px solid var(--line);border-radius:999px;color:var(--ink);background:var(--panel2)}
 .hero{padding:58px 0 34px}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:stretch}
@@ -192,7 +193,7 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
   .journey-band{grid-template-columns:1fr}
   .journey-band .btn{width:auto}
   .mobile-dock{display:grid;position:fixed;left:8px;right:8px;bottom:8px;z-index:120;grid-template-columns:repeat(5,1fr);gap:3px;padding:6px;border:1px solid var(--line);border-radius:18px;background:rgba(7,16,13,.92);backdrop-filter:blur(18px);box-shadow:0 18px 50px rgba(0,0,0,.4);padding-bottom:calc(6px + env(safe-area-inset-bottom))}
-  .dock{display:grid;place-items:center;gap:2px;min-height:45px;border-radius:12px;color:var(--dim);font-size:8.5px;font-weight:750}
+  .dock{display:grid;place-items:center;gap:2px;min-height:45px;border-radius:12px;color:var(--dim);font-size:8.5px;font-weight:750;border:0;background:transparent;padding:0}
   .dock.active,.dock:hover{background:rgba(57,224,161,.08);color:var(--green)}
   .footer{padding-bottom:124px}
   .modal{padding:8px}
@@ -202,6 +203,24 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
   html{scroll-behavior:auto}
   *,*:before,*:after{animation:none!important;transition:none!important}
 }
+
+.human-modal{position:fixed;inset:0;z-index:180;background:rgba(0,0,0,.62);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:16px}
+.human-modal.open{display:flex}
+.human-card{width:min(520px,100%);border:1px solid var(--line2);border-radius:24px;background:#08130f;box-shadow:0 30px 90px rgba(0,0,0,.55);overflow:hidden}
+.human-head{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center}
+.human-head h3{font-family:var(--display);font-size:18px;margin:0}
+.human-head p{font-size:10px;color:var(--dim);margin:3px 0 0}
+.human-close{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--ink)}
+.human-body{padding:18px;display:grid;gap:12px}
+.human-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.human-field{display:grid;gap:6px}
+.human-field label{font-size:9px;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;font-weight:800}
+.human-field input,.human-field select,.human-field textarea{width:100%;color:var(--ink);background:#09140f;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.human-field textarea{min-height:110px;resize:vertical}
+.human-note{font-size:10px;color:var(--dim);line-height:1.5}
+.human-status{font-size:11px;color:var(--muted);display:none}
+.human-status.show{display:block}
+@media(max-width:620px){.human-modal{padding:8px}.human-grid{grid-template-columns:1fr}}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -216,7 +235,7 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
       <a href="#mcp">October</a>
       <a href="#materials">Materials</a>
       <a href="#services">Services</a>
-      <a class="human" href="https://wa.me/2347046481828" target="_blank" rel="noopener">Human support</a>
+      <button class="nav-human" id="humanSupportTop" type="button">Human support</button>
       <a class="account" href="/account/">Account</a>
     </div>
   </div>
@@ -403,7 +422,7 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
 <footer class="wrap footer">
   <div class="footer-grid">
     <div>CIBN BOT · Powered by ABBA · A product of Institute GPT</div>
-    <div><a href="https://www.cibng.org/micro-finance-certification-program-mcp/" target="_blank" rel="noopener">CIBN MCP</a> · <a href="https://portal.cibng.org/" target="_blank" rel="noopener">CIBN Portal</a> · <a href="https://wa.me/2347046481828" target="_blank" rel="noopener">Human support</a></div>
+    <div><a href="https://www.cibng.org/micro-finance-certification-program-mcp/" target="_blank" rel="noopener">CIBN MCP</a> · <a href="https://portal.cibng.org/" target="_blank" rel="noopener">CIBN Portal</a> · <button class="nav-human" id="humanSupportFooter" type="button">Human support</button></div>
   </div>
 </footer>
 
@@ -412,8 +431,29 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
   <a class="dock" href="#map">◈<span>Courses</span></a>
   <a class="dock" href="#mcp">◷<span>October</span></a>
   <a class="dock" href="#materials">▤<span>Materials</span></a>
-  <a class="dock" href="https://wa.me/2347046481828">?<span>Human</span></a>
+  <button class="dock" id="humanSupportDock" type="button">?<span>Human</span></button>
 </nav>
+
+<div class="human-modal" id="humanModal" aria-hidden="true">
+  <div class="human-card">
+    <div class="human-head"><div><h3>Contact human ABBA</h3><p>ABBA accepts the request first, then routes you to the human support channel.</p></div><button class="human-close" id="closeHuman" type="button" aria-label="Close">×</button></div>
+    <form class="human-body" id="humanForm">
+      <div class="human-grid">
+        <div class="human-field"><label for="humanName">Name</label><input id="humanName" name="name" autocomplete="name" required></div>
+        <div class="human-field"><label for="humanPhone">Phone / WhatsApp</label><input id="humanPhone" name="phone" inputmode="tel" autocomplete="tel" required></div>
+      </div>
+      <div class="human-grid">
+        <div class="human-field"><label for="humanEmail">Email</label><input id="humanEmail" name="email" type="email" autocomplete="email"></div>
+        <div class="human-field"><label for="humanStage">Stage</label><select id="humanStage" name="stage"><option>Not yet registered</option><option>Student Member</option><option>Already on a programme</option><option>Preparing for an exam diet</option><option>Resitting / after results</option></select></div>
+      </div>
+      <div class="human-field"><label for="humanArea">Work area</label><select id="humanArea" name="area"><option>Not sure yet</option><option>Operations</option><option>Credit / Lending</option><option>Audit</option><option>Risk</option><option>Compliance / Regulation</option><option>Digital / Fintech</option><option>Agency Banking</option><option>Treasury / Markets</option><option>SME</option><option>Public Sector</option><option>Non-Interest Banking</option><option>Deposit Insurance / Central Banking</option><option>Sustainable Banking / ESG</option></select></div>
+      <div class="human-field"><label for="humanReason">What do you need a human for?</label><textarea id="humanReason" name="message" maxlength="3000" required placeholder="Tell ABBA enough context so the human does not have to start from zero."></textarea></div>
+      <div class="human-note">Do not enter passwords, PINs, OTPs, card numbers or bank credentials.</div>
+      <button class="btn primary" id="humanSubmit" type="submit">Send to human ABBA</button>
+      <div class="human-status" id="humanStatus" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
 
 <div class="modal" id="chatModal" aria-hidden="true">
   <div class="modal-card">
@@ -428,13 +468,20 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
   var API='https://noun-student-bot-dashboard.vercel.app/api/ai-study';
   var busy=false, lastQuestion='';
   var modal=document.getElementById('chatModal'), log=document.getElementById('chatLog'), input=document.getElementById('chatInput');
+  var humanModal=document.getElementById('humanModal'), humanForm=document.getElementById('humanForm'), humanStatus=document.getElementById('humanStatus'), humanSubmit=document.getElementById('humanSubmit');
   function openChat(){modal.classList.add('open');modal.setAttribute('aria-hidden','false');setTimeout(function(){input.focus();},40);}
   function closeChat(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');}
+  function openHuman(reason){humanModal.classList.add('open');humanModal.setAttribute('aria-hidden','false');if(reason){document.getElementById('humanReason').value=reason;}setTimeout(function(){document.getElementById('humanName').focus();},40);}
+  function closeHuman(){humanModal.classList.remove('open');humanModal.setAttribute('aria-hidden','true');}
   function bubble(kind,text){var el=document.createElement('div');el.className='bubble '+kind;el.textContent=text;log.appendChild(el);log.scrollTop=log.scrollHeight;return el;}
   function addSource(text){var el=document.createElement('div');el.className='source-row';el.textContent=text;log.appendChild(el);}
   function composed(q){var s=document.getElementById('stage').value;var a=document.getElementById('area').value;return '[Candidate stage: '+s+'][Work area: '+a+'] '+q;}
   async function ask(q){
     if(busy || !q)return;
+    if(/\b(i|we)\s+(need|want)\s+(to\s+)?(talk|speak|connect|chat)\s+to\s+(a\s+)?(human|person|agent|representative)\b/i.test(q) || /\b(talk|speak|connect|put me)\b.{0,24}\b(human|person|agent|representative)\b/i.test(q)){
+      openHuman(q);
+      return;
+    }
     busy=true;lastQuestion=q;openChat();bubble('me',q);
     var wait=bubble('ai','ABBA is checking the current CIBN evidence…');
     try{
@@ -451,6 +498,26 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
   document.getElementById('openFullChat').addEventListener('click',openChat);
   document.getElementById('bottomAsk').addEventListener('click',function(){document.getElementById('ask').scrollIntoView({behavior:'smooth'});});
   document.getElementById('closeChat').addEventListener('click',closeChat);
+  document.getElementById('humanSupportTop').addEventListener('click',function(){openHuman('I would like to speak with a human about my CIBN journey.');});
+  document.getElementById('humanSupportDock').addEventListener('click',function(){openHuman('I would like to speak with a human about my CIBN journey.');});
+  document.getElementById('humanSupportFooter').addEventListener('click',function(){openHuman('I would like to speak with a human about my CIBN journey.');});
+  document.getElementById('closeHuman').addEventListener('click',closeHuman);
+  humanModal.addEventListener('click',function(e){if(e.target===humanModal)closeHuman();});
+  humanForm.addEventListener('submit',async function(e){
+    e.preventDefault();
+    humanSubmit.disabled=true;humanSubmit.textContent='Sending…';humanStatus.className='human-status show';humanStatus.textContent='ABBA is accepting the request…';
+    var data=Object.fromEntries(new FormData(humanForm).entries());
+    try{
+      var r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product:'cibn',mode:'human',message:data.message,name:data.name,phone:data.phone,email:data.email,stage:data.stage,area:data.area,channel:'web'})});
+      var d=await r.json();
+      if(!r.ok||!d.ok||!d.handoff||!d.handoff.handoffUrl)throw new Error(d.error||'Human support could not be queued');
+      humanStatus.textContent='Accepted. Human ABBA is ready. Opening the support channel…';
+      setTimeout(function(){location.href=d.handoff.handoffUrl;},250);
+    }catch(err){
+      humanStatus.textContent=err.message||'We could not queue human support. The published support line is 0704 648 1828.';
+      humanSubmit.disabled=false;humanSubmit.textContent='Send to human ABBA';
+    }
+  });
   modal.addEventListener('click',function(e){if(e.target===modal)closeChat();});
   document.getElementById('chatSend').addEventListener('click',function(){var q=input.value.trim();if(q){input.value='';ask(q);}});
   input.addEventListener('keydown',function(e){if(e.key==='Enter'){var q=input.value.trim();if(q){input.value='';ask(q);}}});
