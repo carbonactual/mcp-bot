@@ -128,6 +128,11 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
 .session .dur{font-size:10px;color:var(--green);font-weight:750;text-align:right}
 .rule{padding:14px 16px;border:1px dashed var(--line2);border-radius:16px;color:var(--muted);font-size:11px;background:rgba(57,224,161,.03)}
 .rule b{color:var(--ink)}
+.rule-grid{display:grid;gap:8px;margin-top:14px}
+.rule-card{padding:11px 12px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02)}
+.rule-card b{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:4px}
+.rule-card span{display:block;font-size:10px;line-height:1.5;color:var(--muted)}
+
 .fees{overflow:auto;border:1px solid var(--line);border-radius:18px}
 .fees table{width:100%;border-collapse:collapse;min-width:720px}
 .fees th,.fees td{padding:12px 13px;border-bottom:1px solid var(--line);text-align:left;font-size:10.5px}
@@ -328,18 +333,16 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
     </div>
     <div class="mcp-grid">
       <div class="schedule">
-        <div class="session"><div><div class="date">Tue · 06 Oct</div><div class="time">09:00–12:00</div></div><div class="papers">MF301 · MF302</div><div class="dur">90 + 90 min</div></div>
-        <div class="session"><div><div class="date">Tue · 06 Oct</div><div class="time">14:00–17:00</div></div><div class="papers">MF303 · MF402</div><div class="dur">90 + 90 min</div></div>
-        <div class="session"><div><div class="date">Wed · 07 Oct</div><div class="time">09:00–12:00</div></div><div class="papers">MF401 · MF403</div><div class="dur">90 + 90 min</div></div>
-        <div class="session"><div><div class="date">Wed · 07 Oct</div><div class="time">14:00–17:00</div></div><div class="papers">MF404</div><div class="dur">90 min</div></div>
-        <div class="rule"><b>Important:</b> the official rule is a 3-hour maximum per session. The two-paper MCP sessions above total exactly 3 hours. ABBA will not call them a clash merely because they share a session. Confirm your actual selected elective in the portal.</div>
+        <div id="mcpSchedule"><div class="rule"><b>Loading:</b> current October 2026 CIBN timetable…</div></div>
+        <div class="rule"><b>Important:</b> CIBN's published rule is a 3-hour maximum combined course duration per session. Sharing a time block does not by itself prove a clash.</div>
       </div>
       <div class="notice">
         <strong>Six-course MCP route</strong>
         <div class="big">3 + 2 + 1</div>
-        <p>Three Microfinance I papers, two mandatory Microfinance II papers, and one elective. CIBN's current page lists MF403 Digital Finance and MF404 SME Management as the two elective options.</p>
+        <p id="mcpRouteNote">Loading the current CIBN selection rule and elective branches…</p>
         <div class="official">Official MCP exam fee for 6 subjects · ₦32,500</div>
         <div class="official">Remote Online Proctoring Platform</div>
+        <div id="mcpSelectionRules" class="rule-grid" aria-live="polite"></div>
       </div>
     </div>
   </div>
@@ -468,6 +471,58 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
 <script>
 (function(){
   var API='https://noun-student-bot-dashboard.vercel.app/api/ai-study';
+  var CATALOG_API='https://noun-student-bot-dashboard.vercel.app/api/cibn-catalog';
+  function escapeHtml(value){
+    return String(value==null?'':value).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});
+  }
+  function formatMcpDate(value){
+    var parts=String(value||'').split('-');
+    if(parts.length!==3)return value;
+    var d=new Date(value+'T00:00:00Z');
+    return d.toLocaleDateString('en-GB',{weekday:'short',day:'2-digit',month:'short',timeZone:'UTC'});
+  }
+  async function loadCibnCatalog(){
+    var schedule=document.getElementById('mcpSchedule');
+    var rules=document.getElementById('mcpSelectionRules');
+    var routeNote=document.getElementById('mcpRouteNote');
+    if(!schedule || !rules)return;
+    try{
+      var response=await fetch(CATALOG_API,{headers:{Accept:'application/json'}});
+      if(!response.ok)throw new Error('catalog '+response.status);
+      var data=await response.json();
+      var courses=(data.courses||[]).filter(function(x){return x.program==='MCP';});
+      var groups={};
+      courses.forEach(function(x){
+        var key=x.date+'|'+x.time;
+        if(!groups[key])groups[key]=[];
+        groups[key].push(x);
+      });
+      schedule.innerHTML=Object.keys(groups).sort().map(function(key){
+        var items=groups[key];
+        var total=items.reduce(function(sum,x){return sum+Number(x.durationMinutes||90);},0);
+        var within=total<=180;
+        return '<div class="session"><div><div class="date">'+escapeHtml(formatMcpDate(items[0].date))+'</div><div class="time">'+escapeHtml(items[0].time)+'</div></div>'+
+          '<div class="papers">'+items.map(function(x){return '<span>'+escapeHtml(x.code)+(x.elective?' <small>(elective)</small>':'')+'</span>';}).join(' · ')+'</div>'+
+          '<div class="dur">'+escapeHtml(items.map(function(x){return Number(x.durationMinutes||90)+' min';}).join(' + '))+' · '+(within?'within cap':'over cap')+'</div></div>';
+      }).join('');
+      var mcp=data.selection_rules&&data.selection_rules.mcp;
+      if(mcp){
+        routeNote.textContent='Three Microfinance I papers (MF301–MF303), two mandatory Microfinance II papers (MF401–MF402), and one elective: MF403 Digital Finance or MF404 SME Management and Development.';
+      }
+      var displayRules=[
+        ['MCP','3 Microfinance I + 2 mandatory Microfinance II + 1 elective.'],
+        ['ACIB Chartered Banker','5 core subjects + 1 elective from the 8 elective subjects.'],
+        ['Certification Programme','Portal evidence shows a maximum of 5 courses in that selection context.'],
+        ['E-Payments','No numeric maximum is being inferred; the observed portal rejection was a timetable-clash combination.'],
+        ['Agency Banking','No numeric maximum is being inferred from the current screenshot; 12 courses were visible in the observed selection.']
+      ];
+      rules.innerHTML=displayRules.map(function(x){return '<div class="rule-card"><b>'+escapeHtml(x[0])+'</b><span>'+escapeHtml(x[1])+'</span></div>';}).join('');
+    }catch(error){
+      schedule.innerHTML='<div class="rule"><b>Catalog unavailable:</b> the live CIBN timetable could not be loaded. Ask ABBA rather than relying on a stale schedule.</div>';
+      rules.innerHTML='';
+      routeNote.textContent='The live CIBN catalog is temporarily unavailable.';
+    }
+  }
   var busy=false, lastQuestion='';
   var modal=document.getElementById('chatModal'), log=document.getElementById('chatLog'), input=document.getElementById('chatInput');
   var humanModal=document.getElementById('humanModal'), humanForm=document.getElementById('humanForm'), humanStatus=document.getElementById('humanStatus'), humanSubmit=document.getElementById('humanSubmit');
@@ -495,6 +550,7 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
     }catch(e){wait.remove();bubble('ai','The connection failed before the answer arrived. Your question was not redirected to WhatsApp. Please try again.');}
     finally{busy=false;}
   }
+  loadCibnCatalog();
   document.getElementById('heroSend').addEventListener('click',function(){ask(document.getElementById('heroQuestion').value.trim()||'Help me understand where I should start with CIBN.');});
   document.getElementById('heroAsk').addEventListener('click',function(){document.getElementById('ask').scrollIntoView({behavior:'smooth'});setTimeout(openChat,300);});
   document.getElementById('openFullChat').addEventListener('click',openChat);
