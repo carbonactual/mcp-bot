@@ -347,15 +347,24 @@ async function buy(plan,qty){
   var busy=false;
   fab.addEventListener('click',function(){panel.classList.toggle('open');if(panel.classList.contains('open'))input.focus();});
   function add(cls,text){var d=document.createElement('div');d.className='msg '+cls;d.textContent=text;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;}
-  function waChip(){var d=document.createElement('div');d.className='msg bot';d.innerHTML='I could not reach the engine just now. You can reach us directly on WhatsApp: <a class="wa" href="https://wa.me/2347046481828" target="_blank" rel="noopener">Chat on WhatsApp →</a>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
+  var lastQuestion='';
+  function addSources(sources){
+    if(!Array.isArray(sources)||!sources.length)return;
+    var unique=[];var seen={};
+    sources.forEach(function(s){if(s&&s.url&&!seen[s.url]){seen[s.url]=1;unique.push(s);}});
+    if(!unique.length)return;
+    var d=document.createElement('div');d.className='msg bot';d.innerHTML='<span style="color:var(--dim)">Sources:</span> '+unique.slice(0,4).map(function(s,i){return '<a class="wa" style="margin-right:8px" href="'+s.url+'" target="_blank" rel="noopener">'+(s.title||('Source '+(i+1))).replace(/</g,'&lt;')+'</a>';}).join('');msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
+  }
+  function showRetry(){var d=document.createElement('div');d.className='msg bot';d.innerHTML='ABBA is temporarily at capacity. Your question was not lost. <button id="abbaRetry" class="chip" style="margin-top:8px">Try again</button>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;document.getElementById('abbaRetry').addEventListener('click',function(){ask(lastQuestion);});}
+  function showHuman(){var d=document.createElement('div');d.className='msg bot';d.innerHTML='I can connect you to a human for registration, support or another matter that needs a person. <a class="wa" href="https://wa.me/2347046481828" target="_blank" rel="noopener">Open WhatsApp →</a>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
   function ask(q){
-    if(busy)return;busy=true;
+    if(busy)return;busy=true;lastQuestion=q;
     add('me',q);
     var t=document.createElement('div');t.className='typing';t.innerHTML='<i></i><i></i><i></i>';msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;
     fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product:'cibn',message:q,mode:'study'})})
       .then(function(r){return r.json();})
-      .then(function(d){t.remove();if(d&&d.ok&&d.answer){add('bot',d.answer);}else{waChip();}})
-      .catch(function(){t.remove();waChip();})
+      .then(function(d){t.remove();if(d&&d.ok&&d.answer){add('bot',d.answer);addSources(d.sources);}else{showRetry();}})
+      .catch(function(){t.remove();showRetry();})
       .then(function(){busy=false;});
   }
   send.addEventListener('click',function(){var q=input.value.trim();if(q){input.value='';ask(q);}});
