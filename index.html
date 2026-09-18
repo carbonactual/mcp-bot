@@ -397,14 +397,14 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
       <div><div class="kicker">CIBN BOT services</div><h2>We sell the journey, not just the mock.</h2><p class="sub">These are Institute GPT / CIBN BOT commercial services. CIBN institutional examination fees remain separate and are paid to CIBN.</p></div>
     </div>
     <div class="services">
-      <article class="service"><h3>Level One</h3><div class="price">₦22,500</div><p>First three MCP courses.</p><button class="buy" data-plan="level_one" data-label="Start Level One — ₦22,500">Start</button></article>
-      <article class="service"><h3>Pass Package</h3><div class="price">₦36,000</div><p>All six MCP courses in one diet.</p><button class="buy" data-plan="pass_package" data-label="Get the Pass Package — ₦36,000">Get package</button></article>
-      <article class="service"><h3>Coaching</h3><div class="price">₦5,000</div><p>Per course, tailored to your pace.</p><button class="buy" data-plan="coaching_1" data-label="Start coaching">Start</button></article>
-      <article class="service"><h3>Mock Season</h3><div class="price">₦15,000</div><p>Full diet; single course ₦3,500.</p><button class="buy" data-plan="mock_full" data-label="Mock the full diet — ₦15,000">Start</button></article>
-      <article class="service"><h3>Concierge</h3><div class="price">₦5,000</div><p>Registration + materials support.</p><button class="buy" data-plan="reg_concierge" data-label="Hand it over — ₦5,000">Start</button></article>
-      <article class="service"><h3>Exam-Day Command</h3><div class="price">₦19,250</div><p>Readiness check + exam-day support.</p><button class="buy" data-plan="exam_command" data-label="Command my exam day">Start</button></article>
-      <article class="service"><h3>Rescue Resit</h3><div class="price">₦6,750</div><p>Per course, after a failed paper.</p><button class="buy" data-plan="rescue_resit" data-label="Rescue my course">Start</button></article>
-      <article class="service"><h3>B2B staff</h3><div class="price">₦25,000</div><p>Per staff member; 20% off 5+.</p><button class="buy" data-plan="b2b_staff" data-label="Equip my team">Talk to ABBA</button></article>
+      <article class="service"><h3>Level One</h3><div class="price">₦22,500</div><p>First three MCP courses.</p><button class="buy" data-service="Level One — MCP first three courses">Request</button></article>
+      <article class="service"><h3>Pass Package</h3><div class="price">₦36,000</div><p>All six MCP courses in one diet.</p><button class="buy" data-service="Pass Package — all six MCP courses">Request</button></article>
+      <article class="service"><h3>Coaching</h3><div class="price">₦5,000</div><p>Per course, tailored to your pace.</p><button class="buy" data-service="Coaching — per course">Request</button></article>
+      <article class="service"><h3>Mock Season</h3><div class="price">₦15,000</div><p>Full diet; single course ₦3,500.</p><button class="buy" data-service="Mock Season — full diet">Request</button></article>
+      <article class="service"><h3>Concierge</h3><div class="price">₦5,000</div><p>Registration + materials support.</p><button class="buy" data-service="Registration & Materials Concierge">Request</button></article>
+      <article class="service"><h3>Exam-Day Command</h3><div class="price">₦19,250</div><p>Readiness check + exam-day support.</p><button class="buy" data-service="Exam-Day Command">Request</button></article>
+      <article class="service"><h3>Rescue Resit</h3><div class="price">₦6,750</div><p>Per course, after a failed paper.</p><button class="buy" data-service="Rescue Resit — per course">Request</button></article>
+      <article class="service"><h3>B2B staff</h3><div class="price">₦25,000</div><p>Per staff member; 20% off 5+.</p><button class="buy" data-service="B2B staff certification package">Request</button></article>
     </div>
   </div>
 </section>
@@ -436,7 +436,7 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
 
 <div class="human-modal" id="humanModal" aria-hidden="true">
   <div class="human-card">
-    <div class="human-head"><div><h3>Contact human ABBA</h3><p>ABBA accepts the request first, then routes you to the human support channel.</p></div><button class="human-close" id="closeHuman" type="button" aria-label="Close">×</button></div>
+    <div class="human-head"><div><h3>Request a service</h3><p>ABBA accepts the service request first, then routes it to the human ABBA service team.</p></div><button class="human-close" id="closeHuman" type="button" aria-label="Close">×</button></div>
     <form class="human-body" id="humanForm">
       <div class="human-grid">
         <div class="human-field"><label for="humanName">Name</label><input id="humanName" name="name" autocomplete="name" required></div>
@@ -447,9 +447,9 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
         <div class="human-field"><label for="humanStage">Stage</label><select id="humanStage" name="stage"><option>Not yet registered</option><option>Student Member</option><option>Already on a programme</option><option>Preparing for an exam diet</option><option>Resitting / after results</option></select></div>
       </div>
       <div class="human-field"><label for="humanArea">Work area</label><select id="humanArea" name="area"><option>Not sure yet</option><option>Operations</option><option>Credit / Lending</option><option>Audit</option><option>Risk</option><option>Compliance / Regulation</option><option>Digital / Fintech</option><option>Agency Banking</option><option>Treasury / Markets</option><option>SME</option><option>Public Sector</option><option>Non-Interest Banking</option><option>Deposit Insurance / Central Banking</option><option>Sustainable Banking / ESG</option></select></div>
-      <div class="human-field"><label for="humanReason">What do you need a human for?</label><textarea id="humanReason" name="message" maxlength="3000" required placeholder="Tell ABBA enough context so the human does not have to start from zero."></textarea></div>
+      <div class="human-field"><label for="humanService">Service</label><select id="humanService" name="service" required><option>Registration & Materials Concierge</option><option>Level One — MCP first three courses</option><option>Pass Package — all six MCP courses</option><option>Coaching — per course</option><option>Mock Season — full diet</option><option>Exam-Day Command</option><option>Rescue Resit — per course</option><option>B2B staff certification package</option></select></div><div class="human-field"><label for="humanReason">What do you need?</label><textarea id="humanReason" name="message" maxlength="3000" required placeholder="Tell ABBA enough context so the human does not have to start from zero."></textarea></div>
       <div class="human-note">Do not enter passwords, PINs, OTPs, card numbers or bank credentials.</div>
-      <button class="btn primary" id="humanSubmit" type="submit">Send to human ABBA</button>
+      <button class="btn primary" id="humanSubmit" type="submit">Send service request</button>
       <div class="human-status" id="humanStatus" role="status" aria-live="polite"></div>
     </form>
   </div>
@@ -478,7 +478,7 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
   function composed(q){var s=document.getElementById('stage').value;var a=document.getElementById('area').value;return '[Candidate stage: '+s+'][Work area: '+a+'] '+q;}
   async function ask(q){
     if(busy || !q)return;
-    if(/\b(i|we)\s+(need|want)\s+(to\s+)?(talk|speak|connect|chat)\s+to\s+(a\s+)?(human|person|agent|representative)\b/i.test(q) || /\b(talk|speak|connect|put me)\b.{0,24}\b(human|person|agent|representative)\b/i.test(q)){
+    if(/\b(service|services|registration help|coaching|mock season|concierge|rescue resit|exam-day command|b2b)\b/i.test(q)){
       openHuman(q);
       return;
     }
@@ -498,9 +498,9 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
   document.getElementById('openFullChat').addEventListener('click',openChat);
   document.getElementById('bottomAsk').addEventListener('click',function(){document.getElementById('ask').scrollIntoView({behavior:'smooth'});});
   document.getElementById('closeChat').addEventListener('click',closeChat);
-  document.getElementById('humanSupportTop').addEventListener('click',function(){openHuman('I would like to speak with a human about my CIBN journey.');});
-  document.getElementById('humanSupportDock').addEventListener('click',function(){openHuman('I would like to speak with a human about my CIBN journey.');});
-  document.getElementById('humanSupportFooter').addEventListener('click',function(){openHuman('I would like to speak with a human about my CIBN journey.');});
+  document.getElementById('servicesTop').addEventListener('click',function(){openHuman('I would like help choosing and starting a CIBN BOT service.');});
+  document.getElementById('servicesDock').addEventListener('click',function(){openHuman('I would like help choosing and starting a CIBN BOT service.');});
+  document.getElementById('servicesFooter').addEventListener('click',function(){openHuman('I would like help choosing and starting a CIBN BOT service.');});
   document.getElementById('closeHuman').addEventListener('click',closeHuman);
   humanModal.addEventListener('click',function(e){if(e.target===humanModal)closeHuman();});
   humanForm.addEventListener('submit',async function(e){
@@ -508,10 +508,10 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
     humanSubmit.disabled=true;humanSubmit.textContent='Sending…';humanStatus.className='human-status show';humanStatus.textContent='ABBA is accepting the request…';
     var data=Object.fromEntries(new FormData(humanForm).entries());
     try{
-      var r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product:'cibn',mode:'human',message:data.message,name:data.name,phone:data.phone,email:data.email,stage:data.stage,area:data.area,channel:'web'})});
+      var r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product:'cibn',mode:'service',message:data.message,name:data.name,phone:data.phone,email:data.email,stage:data.stage,area:data.area,service:data.service,channel:'web'})});
       var d=await r.json();
       if(!r.ok||!d.ok||!d.handoff||!d.handoff.handoffUrl)throw new Error(d.error||'Human support could not be queued');
-      humanStatus.textContent='Accepted. Human ABBA is ready. Opening the support channel…';
+      humanStatus.textContent='Accepted by ABBA. Opening the service handoff…';
       setTimeout(function(){location.href=d.handoff.handoffUrl;},250);
     }catch(err){
       humanStatus.textContent=err.message||'We could not queue human support. The published support line is 0704 648 1828.';
@@ -528,19 +528,9 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
   var email=document.createElement('input');
   email.type='email';email.placeholder='Email for secure checkout (optional)';email.className='email-line';email.id='checkoutEmail';
   document.querySelectorAll('.buy').forEach(function(btn){
-    btn.addEventListener('click',async function(){
-      var plan=btn.getAttribute('data-plan');
-      if(plan==='b2b_staff'){ask('I want to equip a bank team through the CIBN BOT B2B service. Explain the package and what you need from me.');return;}
-      var old=btn.textContent;btn.disabled=true;btn.textContent='Preparing…';
-      try{
-        var r=await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({plan:plan,quantity:1,email:(document.getElementById('checkoutEmail')||{}).value||''})});
-        var d=await r.json();
-        if(!d.ok||!d.checkout_url)throw new Error(d.error||'Checkout unavailable');
-        location.href=d.checkout_url;
-      }catch(e){
-        btn.disabled=false;btn.textContent=old;
-        openChat();bubble('ai','Secure checkout is not available from this deployment yet. I have not redirected you because of an AI failure. For payment support, use the Human Support link above.');
-      }
+    btn.addEventListener('click',function(){
+      var service=btn.getAttribute('data-service')||'CIBN BOT service';
+      openHuman('I would like to start this service: '+service+'.',service);
     });
   });
 })();
