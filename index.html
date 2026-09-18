@@ -269,5 +269,80 @@ async function buy(plan,qty){
   }catch(e){btn.disabled=false;btn.textContent=label;alert('Could not open checkout: '+e.message+' — reach us on WhatsApp 0704 648 1828.')}
 }
 </script>
+
+<!-- ABBA chat widget -->
+<style>
+.abba-fab{position:fixed;right:20px;bottom:20px;z-index:90;display:flex;align-items:center;gap:9px;padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,rgba(20,230,166,.16),rgba(15,181,214,.16));border:1px solid var(--line2);color:var(--ink);font-family:var(--font);font-weight:600;cursor:pointer;backdrop-filter:blur(14px);box-shadow:0 8px 32px rgba(20,230,166,.18);transition:transform .2s}
+.abba-fab:hover{transform:translateY(-2px)}
+.abba-fab .dot{width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px var(--mint);animation:pulse 2s infinite}
+.abba-fab .ic{font-size:18px;line-height:1}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.abba-panel{position:fixed;right:20px;bottom:78px;z-index:91;width:min(370px,calc(100vw - 32px));height:min(520px,70vh);border-radius:18px;background:rgba(7,20,16,.92);border:1px solid var(--line2);backdrop-filter:blur(20px);box-shadow:0 24px 64px rgba(0,0,0,.55);display:none;flex-direction:column;overflow:hidden}
+.abba-panel.open{display:flex}
+.abba-panel .ph{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.abba-panel .ph .dot{width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px var(--mint);animation:pulse 2s infinite}
+.abba-panel .ph b{font-size:15px}
+.abba-panel .ph small{display:block;color:var(--muted);font-size:11px;font-weight:400}
+.abba-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.abba-msgs::-webkit-scrollbar{width:5px}
+.abba-msgs::-webkit-scrollbar-thumb{background:var(--line2);border-radius:3px}
+.msg{max-width:86%;padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.55;white-space:pre-wrap;animation:rvup .3s ease}
+@keyframes rvup{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.msg.bot{align-self:flex-start;background:rgba(255,255,255,.06);border:1px solid var(--line);border-bottom-left-radius:4px}
+.msg.me{align-self:flex-end;background:linear-gradient(135deg,rgba(20,230,166,.2),rgba(15,181,214,.2));border:1px solid var(--line2);border-bottom-right-radius:4px}
+.msg .wa{display:inline-block;margin-top:8px;color:var(--mint);text-decoration:none;font-weight:600}
+.typing{align-self:flex-start;display:flex;gap:4px;padding:12px 16px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:tp 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes tp{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.abba-in{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
+.abba-in input{flex:1;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:999px;padding:11px 16px;color:var(--ink);font-family:var(--font);font-size:13.5px;outline:none}
+.abba-in input:focus{border-color:var(--line2)}
+.abba-in button{background:linear-gradient(135deg,var(--mint),var(--teal));border:0;border-radius:999px;padding:0 18px;color:#04110d;font-weight:700;cursor:pointer;font-family:var(--font)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;padding:0 16px 10px}
+.chip{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:5px 12px;font-size:11.5px;cursor:pointer;font-family:var(--font)}
+.chip:hover{border-color:var(--line2);color:var(--ink)}
+</style>
+<button class="abba-fab" id="abbaFab" aria-label="Chat with ABBA"><span class="ic">◈</span> Chat with ABBA <span class="dot"></span></button>
+<div class="abba-panel" id="abbaPanel">
+  <div class="ph"><span class="dot"></span><div><b>ABBA</b><small>CIBN BOT study companion · Institute GPT</small></div></div>
+  <div class="abba-msgs" id="abbaMsgs">
+    <div class="msg bot">Hello! I am ABBA, your CIBN study companion. Ask me anything about your MCP courses, the October diet, or how to prepare — or tap a quick question below.</div>
+  </div>
+  <div class="chips">
+    <button class="chip" data-q="Explain the 6 MCP courses and which ones are mandatory">The 6 MCP courses</button>
+    <button class="chip" data-q="How does the online proctoring work on exam day?">Exam day proctoring</button>
+    <button class="chip" data-q="Give me a practice question on banking ethics">Practice question</button>
+  </div>
+  <div class="abba-in">
+    <input id="abbaInput" type="text" placeholder="Ask ABBA anything about your CIBN journey..." maxlength="500">
+    <button id="abbaSend">Send</button>
+  </div>
+</div>
+<script>
+(function(){
+  var fab=document.getElementById('abbaFab'),panel=document.getElementById('abbaPanel'),msgs=document.getElementById('abbaMsgs'),input=document.getElementById('abbaInput'),send=document.getElementById('abbaSend');
+  var API='https://noun-student-bot-dashboard.vercel.app/api/ai-study';
+  var busy=false;
+  fab.addEventListener('click',function(){panel.classList.toggle('open');if(panel.classList.contains('open'))input.focus();});
+  function add(cls,text){var d=document.createElement('div');d.className='msg '+cls;d.textContent=text;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;}
+  function waChip(){var d=document.createElement('div');d.className='msg bot';d.innerHTML='I could not reach the engine just now. You can reach us directly on WhatsApp: <a class="wa" href="https://wa.me/2347046481828" target="_blank" rel="noopener">Chat on WhatsApp →</a>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
+  function ask(q){
+    if(busy)return;busy=true;
+    add('me',q);
+    var t=document.createElement('div');t.className='typing';t.innerHTML='<i></i><i></i><i></i>';msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;
+    fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product:'cibn',message:q,mode:'study'})})
+      .then(function(r){return r.json();})
+      .then(function(d){t.remove();if(d&&d.ok&&d.answer){add('bot',d.answer);}else{waChip();}})
+      .catch(function(){t.remove();waChip();})
+      .then(function(){busy=false;});
+  }
+  send.addEventListener('click',function(){var q=input.value.trim();if(q){input.value='';ask(q);}});
+  input.addEventListener('keydown',function(e){if(e.key==='Enter'){var q=input.value.trim();if(q){input.value='';ask(q);}}});
+  document.querySelectorAll('.chip').forEach(function(ch){ch.addEventListener('click',function(){ask(ch.getAttribute('data-q'));});});
+})();
+</script>
+<!-- /ABBA chat widget -->
+
 </body>
 </html>
