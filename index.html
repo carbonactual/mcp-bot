@@ -128,7 +128,13 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
 .session .dur{font-size:10px;color:var(--green);font-weight:750;text-align:right}
 .rule{padding:14px 16px;border:1px dashed var(--line2);border-radius:16px;color:var(--muted);font-size:11px;background:rgba(57,224,161,.03)}
 .rule b{color:var(--ink)}
-.rule-grid{display:grid;gap:8px;margin-top:14px}
+.rule-grid{display:grid;gap:8px;margin-top:14px}.selection-check{margin-top:14px;padding:16px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.02)}
+.selection-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.selection-grid .human-field span{font-size:9px;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;font-weight:800;display:block;margin-bottom:6px}
+.selection-grid select{width:100%;min-height:42px;color:var(--ink);background:#09140f;border:1px solid var(--line);border-radius:12px;padding:0 11px}
+.selection-result{font-size:10.5px;color:var(--muted)}
+@media(max-width:620px){.selection-grid{grid-template-columns:1fr}}
+
 .rule-card{padding:11px 12px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02)}
 .rule-card b{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:4px}
 .rule-card span{display:block;font-size:10px;line-height:1.5;color:var(--muted)}
@@ -343,6 +349,34 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
         <div class="official">Official MCP exam fee for 6 subjects · ₦32,500</div>
         <div class="official">Remote Online Proctoring Platform</div>
         <div id="mcpSelectionRules" class="rule-grid" aria-live="polite"></div>
+        <div class="selection-check" id="selectionCheckPanel">
+          <div class="kicker">Selection intelligence</div>
+          <h3 style="font-family:var(--display);font-size:22px;letter-spacing:-.04em;margin:7px 0 4px">Check what you can combine.</h3>
+          <p class="sub">Enter the course codes exactly as they appear in your CIBN portal. ABBA checks programme-specific selection rules, elective limits, and the published session cap.</p>
+          <div class="selection-grid">
+            <label class="human-field"><span>Programme</span><select id="selectionProgram">
+              <option value="">Choose programme</option>
+              <option>ACIB</option>
+              <option>MCP</option>
+              <option>Certification Programme</option>
+              <option>E-Payments</option>
+              <option>Agency Banking</option>
+            </select></label>
+            <label class="human-field"><span>Level (where applicable)</span><select id="selectionLevel">
+              <option value="">Not specified</option>
+              <option>Diploma</option>
+              <option>Intermediate Professional</option>
+              <option>Chartered Banker</option>
+              <option>Microfinance I</option>
+              <option>Microfinance II</option>
+            </select></label>
+          </div>
+          <div class="searchbar">
+            <input id="selectionCodes" placeholder="e.g. MF301, MF302, MF403" aria-label="Course codes">
+            <button class="btn primary" id="selectionCheck" type="button">Check</button>
+          </div>
+          <div class="results" id="selectionResult" aria-live="polite"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -481,6 +515,29 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
     var d=new Date(value+'T00:00:00Z');
     return d.toLocaleDateString('en-GB',{weekday:'short',day:'2-digit',month:'short',timeZone:'UTC'});
   }
+  async function validateCibnSelection(){
+    var result=document.getElementById('selectionResult');
+    var codes=document.getElementById('selectionCodes').value.trim();
+    var program=document.getElementById('selectionProgram').value;
+    var level=document.getElementById('selectionLevel').value;
+    if(!codes){result.innerHTML='<div class="rule"><b>Enter course codes first.</b> Example: MF301, MF302, MF403.</div>';return;}
+    result.innerHTML='<div class="rule"><b>Checking:</b> ABBA is validating the current catalog rules…</div>';
+    try{
+      var response=await fetch(CATALOG_API,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({program:program,level:level,codes:codes})});
+      var data=await response.json();
+      if(!response.ok)throw new Error(data.error||'selection validation failed');
+      var cards=[];
+      if(data.selectionRule&&data.selectionRule.rule) cards.push('<div class="rule-card"><b>Rule</b><span>'+escapeHtml(data.selectionRule.rule)+'</span></div>');
+      (data.errors||[]).forEach(function(x){cards.push('<div class="rule-card"><b>Blocked</b><span>'+escapeHtml(x)+'</span></div>');});
+      (data.warnings||[]).forEach(function(x){cards.push('<div class="rule-card"><b>Warning</b><span>'+escapeHtml(x)+'</span></div>');});
+      (data.sameDisplayedSession||[]).forEach(function(x){cards.push('<div class="rule-card"><b>Same session</b><span>'+escapeHtml(x.courses.map(function(course){return course.code;}).join(' + ')+' — '+x.slot.replace('|',' ')+'; total '+x.totalDurationMinutes+' min')+'</span></div>');});
+      var status=(data.errors||[]).length?'Blocked':((data.warnings||[]).length?'Needs review':'Within known rules');
+      cards.unshift('<div class="rule-card"><b>Status</b><span>'+status+' · '+(data.courses||[]).length+' recognized course(s)</span></div>');
+      result.innerHTML=cards.join('');
+    }catch(error){
+      result.innerHTML='<div class="rule"><b>Validation unavailable.</b> '+escapeHtml(error.message||'The current CIBN catalog could not be reached.')+'</div>';
+    }
+  }
   async function loadCibnCatalog(){
     var schedule=document.getElementById('mcpSchedule');
     var rules=document.getElementById('mcpSelectionRules');
@@ -551,6 +608,9 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
     finally{busy=false;}
   }
   loadCibnCatalog();
+  document.getElementById('selectionCheck').addEventListener('click',validateCibnSelection);
+  document.getElementById('selectionCodes').addEventListener('keydown',function(e){if(e.key==='Enter')validateCibnSelection();});
+
   document.getElementById('heroSend').addEventListener('click',function(){ask(document.getElementById('heroQuestion').value.trim()||'Help me understand where I should start with CIBN.');});
   document.getElementById('heroAsk').addEventListener('click',function(){document.getElementById('ask').scrollIntoView({behavior:'smooth'});setTimeout(openChat,300);});
   document.getElementById('openFullChat').addEventListener('click',openChat);
