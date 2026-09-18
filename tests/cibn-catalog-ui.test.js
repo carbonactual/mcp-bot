@@ -16,3 +16,13 @@ test('CIBN page does not retain a second hard-coded MCP timetable', () => {
   assert.equal((html.match(/MF401 · MF403/g) || []).length, 0);
   assert.equal((html.match(/MF404/g) || []).length, 1);
 });
+
+test('CIBN page exposes programme-specific selection intelligence controls', () => {
+  assert.match(html, /id="selectionCheckPanel"/);
+  assert.match(html, /id="selectionProgram"/);
+  assert.match(html, /id="selectionLevel"/);
+  assert.match(html, /id="selectionCodes"/);
+  assert.match(html, /id="selectionCheck"/);
+  assert.match(html, /validateCibnSelection/);
+  assert.match(html, /programme-specific selection rules/);
+});
