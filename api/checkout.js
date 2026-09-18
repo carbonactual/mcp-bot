@@ -1,18 +1,18 @@
-// CIBN BOT checkout — serverless, NGN-only display (USD internal for Stripe processing)
-// Owner pricing v3 (Sept 17, 2026): Pass Package ₦30,000 all 6 courses one diet.
+// CIBN BOT checkout — Flutterwave NGN rail (owner-set: NGN only, no USD conversion).
+// Pricing v8 (owner-set, Sept 18): Level One ₦22,500 · Pass Package ₦36,000 ·
+// Exam-Day Command ₦19,250 · Rescue Resit ₦6,750 · B2B ₦25,000/staff.
 
 const PLANS = {
-  mock_single:   { usd_cents: 299,  label: "CIBN BOT — Mock Season, 1 course (incl. VAT)" },
-  mock_full:     { usd_cents: 999,  label: "CIBN BOT — Mock Season, full diet, all courses (incl. VAT)" },
-  reg_concierge: { usd_cents: 350,  label: "CIBN BOT — Registration & Materials Concierge" },
-  coaching_1:    { usd_cents: 350,  label: "CIBN BOT — Coaching, 1 course — you save ₦5,000 vs branch classes" },
-  b2b_staff:     { usd_cents: 1699, label: "CIBN BOT — B2B per-staff Pass Bundle (20% off 5+ staff)" },
-  pass_package:  { usd_cents: 1999, label: "CIBN BOT — PASS PACKAGE: all 6 courses, one diet — mocks + coaching + concierge + proctoring prep + alerts + appeal support" },
+  pass_package:  { ngn: 36000, label: "CIBN BOT — PASS PACKAGE: all 6 MCP courses, one diet (mocks, coaching, concierge, proctoring prep, alerts, appeal support)" },
+  level_one:    { ngn: 22500, label: "CIBN BOT — LEVEL ONE: first 3 courses (Accreditation I: MF301, MF302, MF303)" },
+  exam_command: { ngn: 19250, label: "CIBN BOT — Exam-Day Command (proctoring-ready check, room-scan rehearsal, live exam-day support, results & appeal follow-through)" },
+  rescue_resit: { ngn: 6750,  label: "CIBN BOT — Rescue Resit (per failed course: appeal check + retake plan + targeted coaching)" },
+  mock_full:    { ngn: 15000, label: "CIBN BOT — Mock Season, full diet, all courses" },
+  mock_single:  { ngn: 3500,  label: "CIBN BOT — Mock Season, 1 course" },
+  coaching_1:   { ngn: 5000,  label: "CIBN BOT — Coaching, 1 course (branch classes charge ₦10,000)" },
+  reg_concierge:{ ngn: 5000,  label: "CIBN BOT — Registration & Materials Concierge" },
+  b2b_staff:    { ngn: 25000, label: "CIBN BOT — B2B Pass Bundle, per staff (20% off teams of 5+)" },
 };
-
-function formEncode(obj) {
-  return Object.keys(obj).map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(obj[k])).join("&");
-}
 
 module.exports = async (req, res) => {
   if (req.method !== "POST") return res.status(405).json({ ok: false, error: "POST only" });
@@ -26,35 +26,42 @@ module.exports = async (req, res) => {
   let qty = parseInt(body.quantity, 10) || 1;
   if (qty < 1) qty = 1;
   if (qty > 500) qty = 500;
-  const email = String(body.email || "").trim().slice(0, 180);
+  let amount = plan.ngn * qty;
+  if (planId === "b2b_staff" && qty >= 5) amount = Math.round(amount * 0.8); // 20% off teams of 5+
 
-  const params = {
-    mode: "payment",
-    success_url: "https://mcp-bot-eight.vercel.app/?paid=1&plan=" + planId,
-    cancel_url: "https://mcp-bot-eight.vercel.app/?cancelled=1",
-    client_reference_id: "cibn-" + planId + "-" + Date.now(),
-    "line_items[0][quantity]": String(qty),
-    "line_items[0][price_data][currency]": "usd",
-    "line_items[0][price_data][unit_amount]": String(plan.usd_cents),
-    "line_items[0][price_data][product_data][name]": plan.label,
-  };
-  if (email) params.customer_email = email;
-
-  try {
-    const resp = await fetch("https://api.stripe.com/v1/checkout/sessions", {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + process.env.STRIPE_SECRET_KEY,
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: formEncode(params),
+  const secret = process.env.FLW_SECRET_KEY;
+  if (!secret) {
+    return res.status(200).json({
+      ok: false,
+      error: "Online payment activates shortly. Reach us on WhatsApp 0704 648 1828 to lock in your spot now — registration closes Wednesday."
     });
-    const session = await resp.json().catch(() => ({}));
-    if (!resp.ok || !session || !session.url) {
-      return res.status(502).json({ ok: false, error: (session && session.error && session.error.message) || "Stripe session failed" });
+  }
+
+  const email = String(body.email || "").trim().slice(0, 180);
+  const txRef = "cibn-" + planId + "-" + qty + "-" + Date.now();
+  try {
+    const r = await fetch("https://api.flutterwave.com/v3/payments", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: "Bearer " + secret },
+      body: JSON.stringify({
+        tx_ref: txRef,
+        amount: amount,
+        currency: "NGN",
+        redirect_url: "https://mcp-bot-eight.vercel.app/?paid=1&plan=" + planId,
+        customer: email ? { email: email } : undefined,
+        customizations: {
+          title: "CIBN BOT · Institute GPT",
+          description: plan.label + (qty > 1 ? " × " + qty : "")
+        },
+        meta: { plan: planId, quantity: qty }
+      })
+    });
+    const d = await r.json().catch(() => null);
+    if (d && d.status === "success" && d.data && d.data.link) {
+      return res.status(200).json({ ok: true, checkout_url: d.data.link, tx_ref: txRef, amount: amount });
     }
-    return res.status(200).json({ ok: true, checkout_url: session.url });
+    return res.status(502).json({ ok: false, error: "Payment gateway unavailable — reach us on WhatsApp 0704 648 1828." });
   } catch (e) {
-    return res.status(502).json({ ok: false, error: "Checkout is temporarily unavailable" });
+    return res.status(502).json({ ok: false, error: "Payment gateway unreachable — reach us on WhatsApp 0704 648 1828." });
   }
 };
