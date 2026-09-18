@@ -234,8 +234,7 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
       <a href="#map">CIBN map</a>
       <a href="#mcp">October</a>
       <a href="#materials">Materials</a>
-      <a href="#services">Services</a>
-      <button class="nav-human" id="humanSupportTop" type="button">Human support</button>
+      <button class="nav-human" id="servicesTop" type="button">Services</button>
       <a class="account" href="/account/">Account</a>
     </div>
   </div>
@@ -422,7 +421,7 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
 <footer class="wrap footer">
   <div class="footer-grid">
     <div>CIBN BOT · Powered by ABBA · A product of Institute GPT</div>
-    <div><a href="https://www.cibng.org/micro-finance-certification-program-mcp/" target="_blank" rel="noopener">CIBN MCP</a> · <a href="https://portal.cibng.org/" target="_blank" rel="noopener">CIBN Portal</a> · <button class="nav-human" id="humanSupportFooter" type="button">Human support</button></div>
+    <div><a href="https://www.cibng.org/micro-finance-certification-program-mcp/" target="_blank" rel="noopener">CIBN MCP</a> · <a href="https://portal.cibng.org/" target="_blank" rel="noopener">CIBN Portal</a> · <button class="nav-human" id="servicesFooter" type="button">Services</button></div>
   </div>
 </footer>
 
@@ -431,7 +430,7 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
   <a class="dock" href="#map">◈<span>Courses</span></a>
   <a class="dock" href="#mcp">◷<span>October</span></a>
   <a class="dock" href="#materials">▤<span>Materials</span></a>
-  <button class="dock" id="humanSupportDock" type="button">?<span>Human</span></button>
+  <button class="dock" id="servicesDock" type="button">◉<span>Services</span></button>
 </nav>
 
 <div class="human-modal" id="humanModal" aria-hidden="true">
@@ -471,7 +470,7 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
   var humanModal=document.getElementById('humanModal'), humanForm=document.getElementById('humanForm'), humanStatus=document.getElementById('humanStatus'), humanSubmit=document.getElementById('humanSubmit');
   function openChat(){modal.classList.add('open');modal.setAttribute('aria-hidden','false');setTimeout(function(){input.focus();},40);}
   function closeChat(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');}
-  function openHuman(reason){humanModal.classList.add('open');humanModal.setAttribute('aria-hidden','false');if(reason){document.getElementById('humanReason').value=reason;}setTimeout(function(){document.getElementById('humanName').focus();},40);}
+  function openHuman(reason,service){humanModal.classList.add('open');humanModal.setAttribute('aria-hidden','false');if(reason){document.getElementById('humanReason').value=reason;}if(service){document.getElementById('humanService').value=service;}setTimeout(function(){document.getElementById('humanName').focus();},40);}
   function closeHuman(){humanModal.classList.remove('open');humanModal.setAttribute('aria-hidden','true');}
   function bubble(kind,text){var el=document.createElement('div');el.className='bubble '+kind;el.textContent=text;log.appendChild(el);log.scrollTop=log.scrollHeight;return el;}
   function addSource(text){var el=document.createElement('div');el.className='source-row';el.textContent=text;log.appendChild(el);}
@@ -514,8 +513,8 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
       humanStatus.textContent='Accepted by ABBA. Opening the service handoff…';
       setTimeout(function(){location.href=d.handoff.handoffUrl;},250);
     }catch(err){
-      humanStatus.textContent=err.message||'We could not queue human support. The published support line is 0704 648 1828.';
-      humanSubmit.disabled=false;humanSubmit.textContent='Send to human ABBA';
+      humanStatus.textContent=err.message||'We could not queue the service request right now. Please try again.';
+      humanSubmit.disabled=false;humanSubmit.textContent='Send service request';
     }
   });
   modal.addEventListener('click',function(e){if(e.target===modal)closeChat();});
