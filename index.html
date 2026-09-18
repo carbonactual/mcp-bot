@@ -2,378 +2,481 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#04110d">
-<meta name="description" content="CIBN BOT — your CIBN journey, at your pace. MCP, ACIB and certification prep with full-diet mocks, coaching, concierge and proctoring-ready checks. A product of Institute GPT, powered by ABBA.">
-<title>CIBN BOT — Your CIBN journey, at your pace | Institute GPT</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07100d">
+<meta name="description" content="CIBN BOT — ABBA for the whole Chartered Institute of Bankers of Nigeria journey: discover, register, study, prepare, sit, review and continue.">
+<title>CIBN BOT — ABBA for your CIBN journey</title>
 <style>
 :root{
-  --bg:#040a08;--bg2:#071410;
-  --glass:rgba(255,255,255,.045);--glass2:rgba(255,255,255,.07);
-  --line:rgba(120,255,214,.14);--line2:rgba(120,255,214,.3);
-  --mint:#14e6a6;--teal:#0fb5d6;--indigo:#7c6cff;
-  --ink:#eafff6;--muted:#8fa8a0;--dim:#5d716a;
-  --font:"Space Grotesk","Inter",system-ui,sans-serif;
+  --bg:#07100d;
+  --bg2:#0a1712;
+  --panel:rgba(12,27,20,.76);
+  --panel2:rgba(255,255,255,.045);
+  --ink:#eefcf5;
+  --muted:#a3b7ae;
+  --dim:#6f867c;
+  --line:rgba(154,255,220,.13);
+  --line2:rgba(154,255,220,.28);
+  --green:#39e0a1;
+  --teal:#2fc3d9;
+  --cream:#edf5ef;
+  --danger:#ffb48a;
+  --shadow:0 24px 70px rgba(0,0,0,.34);
+  --font:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --display:"Space Grotesk",Inter,ui-sans-serif,system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-.aura{position:fixed;inset:0;z-index:-2;overflow:hidden;background:
-  radial-gradient(1200px 800px at 85% -10%,rgba(15,181,214,.14),transparent 60%),
-  radial-gradient(1000px 700px at -10% 110%,rgba(124,108,255,.12),transparent 60%),
-  radial-gradient(900px 600px at 50% 120%,rgba(20,230,166,.10),transparent 60%),
-  linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
-.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:drift 26s ease-in-out infinite}
-.orb.a{width:520px;height:520px;background:rgba(20,230,166,.16);top:-160px;right:-120px}
-.orb.b{width:460px;height:460px;background:rgba(124,108,255,.14);bottom:-180px;left:-140px;animation-delay:-9s}
-.orb.c{width:360px;height:360px;background:rgba(15,181,214,.12);top:40%;left:55%;animation-delay:-17s}
-@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-60px,40px) scale(1.08)}66%{transform:translate(40px,-30px) scale(.94)}}
-.gridlines{position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background-image:linear-gradient(rgba(120,255,214,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(120,255,214,.03) 1px,transparent 1px);
-  background-size:56px 56px;mask-image:radial-gradient(900px 600px at 50% 0%,#000 0%,transparent 100%)}
-.wrap{width:min(1120px,calc(100% - 30px));margin:auto}
-button,input,select{font:inherit}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:
+radial-gradient(1100px 720px at 85% -8%,rgba(47,195,217,.12),transparent 60%),
+radial-gradient(1000px 700px at 0% 25%,rgba(57,224,161,.08),transparent 58%),
+linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+color:var(--ink);font-family:var(--font);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.3;background-image:
+linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:48px 48px;
+mask-image:linear-gradient(180deg,black,transparent 72%)}
 a{text-decoration:none;color:inherit}
-::selection{background:rgba(20,230,166,.3)}
-
-.top{position:sticky;top:0;z-index:40;background:rgba(4,10,8,.7);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
-.topbar{height:70px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:-.02em;font-size:15px}
-.mark{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;
-  background:linear-gradient(135deg,rgba(20,230,166,.25),rgba(15,181,214,.18));
-  border:1px solid var(--line2);color:var(--mint);font-weight:700;
-  box-shadow:0 0 24px rgba(20,230,166,.25);animation:markpulse 3.5s ease-in-out infinite}
-@keyframes markpulse{0%,100%{box-shadow:0 0 22px rgba(20,230,166,.22)}50%{box-shadow:0 0 38px rgba(20,230,166,.4)}}
-.right{display:flex;gap:11px;align-items:center}
-.pill{border:1px solid var(--line);background:var(--glass);border-radius:999px;padding:8px 14px;color:var(--muted);font-size:11px;backdrop-filter:blur(8px)}
-.wa{font-size:12px;color:var(--mint)}
-
-.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
-
-.hero{padding:60px 0 30px}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:10px;text-transform:uppercase;letter-spacing:.22em;color:var(--mint);font-weight:600;
-  border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:var(--glass)}
-.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 10px var(--mint);animation:blink 2.2s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-.hero h1{font-size:clamp(34px,5vw,60px);line-height:1.04;letter-spacing:-.045em;margin:18px 0 12px;font-weight:700;
-  background:linear-gradient(92deg,#eafff6 30%,#9ff5d8 55%,#7ad8ff 80%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{margin:0;color:var(--muted);font-size:15.5px;max-width:680px}
-.hero-actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:24px}
-.cta{border-radius:14px;padding:13px 20px;font-weight:600;font-size:13px;cursor:pointer;border:0;transition:all .3s}
-.cta.primary{color:#03120c;background:linear-gradient(135deg,#14e6a6,#0fb5d6);box-shadow:0 8px 26px rgba(20,230,166,.28)}
-.cta.primary:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(20,230,166,.4)}
-.cta.ghost{background:var(--glass);border:1px solid var(--line);color:var(--ink)}
-.cta.ghost:hover{border-color:var(--line2);transform:translateY(-2px)}
-
-.alert{margin-top:26px;border:1px solid rgba(20,230,166,.4);border-radius:16px;padding:16px 20px;font-size:13px;
-  background:linear-gradient(135deg,rgba(20,230,166,.1),rgba(15,181,214,.07));display:flex;gap:12px;align-items:flex-start}
-.alert .dot{margin-top:5px;width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 14px var(--mint);animation:blink 1.6s infinite;flex:none}
-.alert b{color:#c9ffe9}
-
-.card{background:var(--glass);border:1px solid var(--line);border-radius:24px;backdrop-filter:blur(14px);
-  box-shadow:0 24px 70px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.05);transition:border-color .35s,transform .35s}
-.card:hover{border-color:var(--line2)}
-
-.pitch{margin-top:22px;padding:30px;position:relative;overflow:hidden}
-.pitch:before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-120px;top:-120px;
-  background:radial-gradient(circle,rgba(20,230,166,.14),transparent 70%)}
-.kicker{font-size:10px;color:var(--mint);font-weight:600;text-transform:uppercase;letter-spacing:.2em}
-.pitch h2{font-size:clamp(24px,3.4vw,34px);line-height:1.12;margin:12px 0;font-weight:700;letter-spacing:-.02em}
-.pitch h2 em{font-style:normal;background:linear-gradient(92deg,#9ff5d8,#7ad8ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.pitch p{color:var(--muted);font-size:13.5px;max-width:720px}
-.compare{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
-.compare div{flex:1;min-width:220px;border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:rgba(0,0,0,.2)}
-.compare small{display:block;text-transform:uppercase;letter-spacing:.16em;font-size:9px;color:var(--dim)}
-.compare b{display:block;font-size:20px;margin:7px 0 3px;font-weight:700}
-.compare span{font-size:11.5px;color:var(--muted)}
-.compare .win{border-color:rgba(20,230,166,.45);box-shadow:0 0 30px rgba(20,230,166,.08)}
-.compare .win b{color:var(--mint)}
-
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
-.stat{border:1px solid var(--line);border-radius:18px;padding:16px;background:var(--glass)}
-.stat b{display:block;font-size:18px;font-weight:700;color:#c9ffe9}
-.stat span{display:block;color:var(--dim);font-size:10.5px;margin-top:4px}
-
-.sechead{margin-top:60px;margin-bottom:20px}
-.sechead .kicker{margin-bottom:8px;display:block}
-.sechead h2{font-size:clamp(24px,3.4vw,34px);margin:0;font-weight:700;letter-spacing:-.02em}
-
-.plans{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.plan{padding:24px;position:relative;overflow:hidden;transition:transform .35s,border-color .35s}
-.plan:hover{transform:translateY(-4px)}
-.plan.feature{grid-column:1/-1;border-color:rgba(20,230,166,.45);box-shadow:0 0 40px rgba(20,230,166,.1)}
-.plan .tag{position:absolute;top:14px;right:14px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#03120c;
-  background:linear-gradient(135deg,#14e6a6,#0fb5d6);border-radius:999px;padding:5px 10px;font-weight:700}
-.plan h3{margin:0 0 4px;font-size:16px;font-weight:600}
-.plan .price{font-size:32px;font-weight:700;letter-spacing:-.03em;margin:10px 0 2px;color:#c9ffe9}
-.plan .price small{font-size:12px;color:var(--dim);font-weight:400;letter-spacing:0}
-.plan ul{margin:14px 0 18px;padding:0 0 0 2px;list-style:none;display:grid;gap:8px}
-.plan li{font-size:12px;color:var(--muted);padding-left:20px;position:relative}
-.plan li:before{content:"✓";position:absolute;left:0;color:var(--mint)}
-.buy{width:100%;border:0;border-radius:13px;padding:13px;font-weight:600;cursor:pointer;color:#03120c;
-  background:linear-gradient(135deg,#14e6a6,#0fb5d6);box-shadow:0 8px 26px rgba(20,230,166,.22);transition:all .3s;font-size:13px}
-.buy:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(20,230,166,.35)}
-.buy:disabled{opacity:.45;transform:none;cursor:default}
-.qty{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:11px;color:var(--dim)}
-.qty input{width:64px;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:9px;padding:7px 9px;color:var(--ink);outline:none}
-.email{margin:22px 0 4px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.email input{flex:1;min-width:240px;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:13px;padding:12px 14px;color:var(--ink);outline:none;transition:border-color .3s,box-shadow .3s}
-.email input:focus{border-color:rgba(20,230,166,.55);box-shadow:0 0 0 4px rgba(20,230,166,.12)}
-.email span{font-size:11px;color:var(--dim)}
-
-.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.feat{padding:20px;border:1px solid var(--line);border-radius:20px;background:var(--glass);transition:transform .3s,border-color .3s}
-.feat:hover{transform:translateY(-4px);border-color:var(--line2)}
-.feat i{display:grid;place-items:center;width:40px;height:40px;border-radius:13px;font-style:normal;font-size:16px;
-  background:linear-gradient(135deg,rgba(20,230,166,.22),rgba(15,181,214,.15));border:1px solid var(--line2);color:var(--mint)}
-.feat b{display:block;margin:12px 0 4px;font-size:13.5px;font-weight:600}
-.feat span{font-size:11.5px;color:var(--muted)}
-
-.integrity{margin-top:22px;padding:20px 24px;border:1px dashed rgba(20,230,166,.4);border-radius:16px;font-size:12px;color:var(--muted);background:rgba(20,230,166,.04)}
-.integrity b{color:#c9ffe9}
-
-.foot{margin-top:60px;border-top:1px solid var(--line);padding:30px 0 46px;text-align:center;color:var(--dim);font-size:11.5px}
-.foot b{color:var(--muted)}
-
-@media(max-width:900px){.plans{grid-template-columns:1fr}.feats{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
-@media(max-width:620px){.topbar{height:62px}.right .pill{display:none}.feats{grid-template-columns:1fr}.compare div{min-width:100%}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(57,224,161,.3);outline-offset:3px}
+.wrap{width:min(1180px,calc(100% - 34px));margin:auto}
+.top{position:sticky;top:0;z-index:100;background:rgba(7,16,13,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.03em;font-family:var(--display)}
+.brandmark{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(57,224,161,.18),rgba(47,195,217,.1));border:1px solid var(--line2);color:var(--green);box-shadow:0 0 28px rgba(57,224,161,.14)}
+.navlinks{display:flex;gap:20px;align-items:center;color:var(--muted);font-size:12px}
+.navlinks a:hover{color:var(--ink)}
+.human{color:var(--green)}
+.account{padding:9px 13px;border:1px solid var(--line);border-radius:999px;color:var(--ink);background:var(--panel2)}
+.hero{padding:58px 0 34px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:stretch}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid var(--line);border-radius:999px;color:var(--green);font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.025)}
+.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+.hero h1{font-family:var(--display);font-size:clamp(42px,6.5vw,76px);line-height:.96;letter-spacing:-.06em;margin:18px 0 16px;max-width:720px}
+.hero h1 .accent{background:linear-gradient(100deg,#f0fff8 22%,#8ff1ca 58%,#86e0ff 95%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.lead{max-width:690px;color:var(--muted);font-size:17px;margin:0}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.btn{min-height:46px;padding:0 16px;border-radius:13px;border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center;font-weight:750;font-size:12px}
+.btn.primary{border-color:transparent;background:linear-gradient(135deg,var(--green),var(--teal));color:#03130d;box-shadow:0 12px 34px rgba(57,224,161,.2)}
+.btn.secondary{background:rgba(255,255,255,.03);color:var(--ink)}
+.meta-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px;color:var(--dim);font-size:10.5px}
+.meta-row span{padding:6px 9px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.02)}
+.abba-shell{height:100%;min-height:470px;border:1px solid var(--line2);border-radius:28px;background:
+linear-gradient(180deg,rgba(22,45,34,.68),rgba(7,17,13,.86));
+box-shadow:var(--shadow);overflow:hidden;position:relative}
+.abba-shell:before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;right:-120px;top:-120px;background:radial-gradient(circle,rgba(57,224,161,.18),transparent 68%)}
+.abba-head{position:relative;display:flex;align-items:center;justify-content:space-between;padding:17px 18px;border-bottom:1px solid var(--line)}
+.abba-title{display:flex;align-items:center;gap:10px}
+.abba-dot{width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 14px rgba(57,224,161,.75)}
+.abba-title b{font-family:var(--display);font-size:15px}
+.abba-title small{display:block;color:var(--dim);font-size:10px;margin-top:2px}
+.ready{color:var(--green);font-size:10px;font-weight:750}
+.abba-body{position:relative;padding:18px;display:flex;flex-direction:column;gap:13px}
+.abba-prompt{padding:14px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.035);color:var(--muted);font-size:12px}
+.choice-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.field{display:grid;gap:6px}
+.field label{font-size:9px;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;font-weight:800}
+.field select,.question{width:100%;min-height:44px;color:var(--ink);background:#09140f;border:1px solid var(--line);border-radius:12px;padding:0 12px}
+.question{min-height:92px;padding:11px 12px;resize:vertical}
+.quick{display:flex;gap:6px;flex-wrap:wrap}
+.quick button{min-height:34px;padding:0 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.025);color:var(--muted);font-size:10px}
+.quick button:hover{border-color:var(--line2);color:var(--ink)}
+.askrow{display:flex;gap:8px}
+.askrow .btn{flex:1}
+.abba-messages{display:none;padding:0 18px 18px;max-height:230px;overflow:auto}
+.abba-messages.open{display:grid;gap:8px}
+.bubble{max-width:88%;padding:10px 12px;border-radius:14px;font-size:12px;line-height:1.5}
+.bubble.ai{background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.bubble.me{justify-self:end;background:linear-gradient(135deg,rgba(57,224,161,.18),rgba(47,195,217,.14));border:1px solid var(--line2)}
+.source-row{font-size:9.5px;color:var(--dim);padding-top:3px}
+.banner{margin-top:16px;border:1px solid rgba(255,180,138,.22);background:rgba(255,180,138,.055);border-radius:18px;padding:13px 15px;color:#dfc9bc;font-size:11.5px}
+.banner b{color:#ffe1d1}
+.section{padding:82px 0;content-visibility:auto;contain-intrinsic-size:720px}
+.section.alt{background:rgba(255,255,255,.018);border-block:1px solid rgba(154,255,220,.05)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px}
+.kicker{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-weight:850}
+h2{font-family:var(--display);font-size:clamp(30px,4.5vw,54px);letter-spacing:-.05em;line-height:1.02;margin:7px 0 0}
+.sub{max-width:670px;margin:10px 0 0;color:var(--muted);font-size:13.5px}
+.section-link{font-size:11px;color:var(--green);white-space:nowrap}
+.overview{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.step{padding:18px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025);min-height:160px}
+.step .n{font-size:9px;color:var(--dim);letter-spacing:.13em;text-transform:uppercase}
+.step h3{font-family:var(--display);font-size:16px;margin:10px 0 5px}
+.step p{font-size:11px;color:var(--muted);margin:0}
+.notice{border:1px solid var(--line);border-radius:22px;padding:20px;background:
+linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
+.notice strong{display:block;font-family:var(--display);font-size:18px}
+.notice .big{font-size:36px;line-height:1;margin:12px 0 6px;font-family:var(--display);letter-spacing:-.05em}
+.notice p{font-size:11px;color:var(--muted);margin:0}
+.official{display:inline-flex;margin-top:13px;padding:6px 9px;border-radius:999px;border:1px solid var(--line);font-size:9px;color:var(--dim)}
+.programmes{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.program{min-height:175px;padding:18px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.025);transition:transform .25s,border-color .25s,background .25s}
+.program:hover{transform:translateY(-3px);border-color:var(--line2);background:rgba(255,255,255,.04)}
+.program .tag{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--green)}
+.program h3{font-family:var(--display);font-size:17px;letter-spacing:-.03em;margin:9px 0 6px}
+.program p{font-size:11px;color:var(--muted);margin:0 0 13px}
+.program .mini-action{display:inline-flex;min-height:32px;padding:0 10px;align-items:center;border:1px solid var(--line);border-radius:999px;font-size:9.5px;color:var(--muted)}
+.mcp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.schedule{display:grid;gap:9px}
+.session{display:grid;grid-template-columns:110px 1fr auto;gap:13px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.024)}
+.session .date{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
+.session .time{font-size:12px;font-weight:800}
+.session .papers{font-size:12px}
+.session .dur{font-size:10px;color:var(--green);font-weight:750;text-align:right}
+.rule{padding:14px 16px;border:1px dashed var(--line2);border-radius:16px;color:var(--muted);font-size:11px;background:rgba(57,224,161,.03)}
+.rule b{color:var(--ink)}
+.fees{overflow:auto;border:1px solid var(--line);border-radius:18px}
+.fees table{width:100%;border-collapse:collapse;min-width:720px}
+.fees th,.fees td{padding:12px 13px;border-bottom:1px solid var(--line);text-align:left;font-size:10.5px}
+.fees th{color:var(--dim);font-size:9px;text-transform:uppercase;letter-spacing:.11em;background:rgba(255,255,255,.025)}
+.fees td strong{font-size:11px}
+.fees tr:last-child td{border-bottom:0}
+.materials{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.material-card{padding:20px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.025)}
+.searchbar{display:flex;gap:8px;margin-top:14px}
+.searchbar input{flex:1;min-height:44px;color:var(--ink);background:#09140f;border:1px solid var(--line);border-radius:12px;padding:0 12px}
+.results{margin-top:12px;display:grid;gap:7px;max-height:300px;overflow:auto}
+.result{padding:10px 11px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02)}
+.result b{display:block;font-size:11px}
+.result span{display:block;font-size:9.5px;color:var(--dim);margin-top:3px}
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.service{padding:18px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025)}
+.service .price{font-size:27px;font-family:var(--display);letter-spacing:-.04em;margin:8px 0 4px}
+.service h3{font-size:14px;margin:0}
+.service p{font-size:10.5px;color:var(--muted);margin:0 0 12px}
+.buy{width:100%;min-height:42px;border-radius:11px;border:0;background:linear-gradient(135deg,var(--green),var(--teal));color:#03130d;font-weight:800;font-size:11px}
+.journey-band{display:grid;grid-template-columns:1fr auto;align-items:center;gap:22px;padding:30px;border:1px solid var(--line2);border-radius:26px;background:linear-gradient(145deg,rgba(57,224,161,.08),rgba(47,195,217,.05))}
+.journey-band h3{font-family:var(--display);font-size:29px;line-height:1.02;letter-spacing:-.04em;margin:0 0 7px}
+.journey-band p{margin:0;color:var(--muted);font-size:11.5px;max-width:740px}
+.email-line{display:none}
+.footer{padding:28px 0 100px;border-top:1px solid var(--line);color:var(--dim);font-size:10px}
+.footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer a{color:var(--muted)}
+.mobile-dock{display:none}
+.modal{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.55);backdrop-filter:blur(10px);display:none;align-items:flex-end;justify-content:flex-end;padding:16px}
+.modal.open{display:flex}
+.modal-card{width:min(480px,100%);max-height:min(760px,92vh);border:1px solid var(--line2);border-radius:24px;background:#08130f;box-shadow:0 30px 90px rgba(0,0,0,.55);overflow:hidden;display:flex;flex-direction:column}
+.modal-head{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.modal-head button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--ink)}
+.chatlog{padding:14px;overflow:auto;display:grid;gap:8px;min-height:180px}
+.chatinput{display:flex;gap:8px;padding:11px;border-top:1px solid var(--line)}
+.chatinput input{flex:1;min-height:44px;background:#09140f;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:0 12px}
+.chatinput button{min-width:84px;border-radius:12px;border:0;background:linear-gradient(135deg,var(--green),var(--teal));font-weight:800;color:#03130d}
+@media(max-width:980px){
+  .navlinks a:not(.account):not(.human){display:none}
+  .hero-grid,.overview,.materials,.mcp-grid{grid-template-columns:1fr}
+  .timeline{grid-template-columns:1fr 1fr}
+  .programmes{grid-template-columns:repeat(2,1fr)}
+  .services{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px){
+  .wrap{width:calc(100% - 22px)}
+  .nav{height:62px}
+  .brandmark{width:34px;height:34px;border-radius:10px}
+  .hero{padding:42px 0 24px}
+  .hero h1{font-size:49px}
+  .lead{font-size:15px}
+  .hero-actions{display:grid;grid-template-columns:1fr}
+  .btn{width:100%}
+  .choice-row{grid-template-columns:1fr}
+  .abba-shell{min-height:0}
+  .timeline,.programmes,.services{grid-template-columns:1fr}
+  .session{grid-template-columns:1fr;gap:4px}
+  .session .dur{text-align:left}
+  .section{padding:68px 0}
+  h2{font-size:38px}
+  .section-head{display:block}
+  .section-link{display:inline-block;margin-top:12px}
+  .journey-band{grid-template-columns:1fr}
+  .journey-band .btn{width:auto}
+  .mobile-dock{display:grid;position:fixed;left:8px;right:8px;bottom:8px;z-index:120;grid-template-columns:repeat(5,1fr);gap:3px;padding:6px;border:1px solid var(--line);border-radius:18px;background:rgba(7,16,13,.92);backdrop-filter:blur(18px);box-shadow:0 18px 50px rgba(0,0,0,.4);padding-bottom:calc(6px + env(safe-area-inset-bottom))}
+  .dock{display:grid;place-items:center;gap:2px;min-height:45px;border-radius:12px;color:var(--dim);font-size:8.5px;font-weight:750}
+  .dock.active,.dock:hover{background:rgba(57,224,161,.08);color:var(--green)}
+  .footer{padding-bottom:124px}
+  .modal{padding:8px}
+  .modal-card{border-radius:20px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation:none!important;transition:none!important}
+}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="aura"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
-<div class="gridlines"></div>
-
-<div class="top"><div class="wrap topbar">
-  <a class="brand" href="https://noun-student-bot-dashboard.vercel.app/"><span class="mark">C</span>CIBN BOT</a>
-  <div class="right"><a class="wa" href="/auth/">Account</a><span class="pill">A product of Institute GPT · Powered by ABBA</span><a class="wa" href="https://wa.me/2347046481828" target="_blank" rel="noopener">WhatsApp →</a></div>
-</div></div>
-
-<main class="wrap">
-  <section class="hero">
-    <div class="eyebrow rv"><i></i>October 2026 diet · Registration closes Wednesday, Sept 23</div>
-    <h1 class="rv d1">Your CIBN journey,<br>at your pace.</h1>
-    <p class="rv d2">CIBN BOT walks with you from registration to results: full-diet mock exams, personal coaching, concierge handling of registration and materials, and a proctoring-ready check for the remote exam room. Intelligently tailored to you.</p>
-    <div class="hero-actions rv d3">
-      <button class="cta primary" onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})">Get the Pass Package — ₦36,000</button>
-      <a class="cta ghost" href="https://wa.me/2347046481828" target="_blank" rel="noopener">Talk to us on WhatsApp</a>
+<div class="top">
+  <div class="wrap nav">
+    <a class="brand" href="/"><span class="brandmark">C</span><span>CIBN BOT</span></a>
+    <div class="navlinks">
+      <a href="#map">CIBN map</a>
+      <a href="#mcp">October</a>
+      <a href="#materials">Materials</a>
+      <a href="#services">Services</a>
+      <a class="human" href="https://wa.me/2347046481828" target="_blank" rel="noopener">Human support</a>
+      <a class="account" href="/account/">Account</a>
     </div>
-
-    <div class="alert rv d4"><span class="dot"></span><div><b>Registration closes this Wednesday, 23 September.</b> The October 2026 examination holds on <b>October 6–7</b> on a remote online proctoring platform. Lock your registration now, then prepare with us — every day you wait is preparation time gone.</div></div>
-  </section>
-
-  <section class="card pitch rv">
-    <span class="kicker">The one-diet strategy</span>
-    <h2>ALL SIX COURSES.<br><em>ONE DIET.</em> ₦29,000 LESS THAN THE BRANCH ROUTE.</h2>
-    <p>The MCP examination is six courses — three in Accreditation I, three in Examination II. You can sit all six in a single diet, and that changes everything: one registration, one season of preparation, one finish line. The full Pass Package covers all six for <b>₦36,000</b> — ₦29,000 less than the branch route — or begin with your first three courses (Accreditation I) for <b>₦22,500</b>. Only ₦13,500 separates half the journey from the whole finish line.</p>
-    <div class="compare">
-      <div><small>CIBN Lagos branch classes</small><b>₦65,000</b><span>₦10,000/subject × 6 + ₦5,000 registration — lectures only</span></div>
-      <div class="win"><small>CIBN BOT Pass Package</small><b>₦36,000</b><span>All 6 courses: mocks, coaching, concierge, proctoring prep, alerts, appeal support — or first 3 courses for ₦22,500</span></div>
-      <div><small>CIBN exam fee (all candidates)</small><b>₦32,500</b><span>Paid directly to CIBN — the same for every route</span></div>
-    </div>
-  </section>
-
-  <div class="stats rv d2">
-    <div class="stat"><b>4</b><span>exam diets every year (Feb · Apr · Jul · Oct)</span></div>
-    <div class="stat"><b>6 in 1</b><span>six MCP courses, one sitting, one diet</span></div>
-    <div class="stat"><b>Remote</b><span>online proctoring — no exam hall travel</span></div>
-    <div class="stat"><b>1:1</b><span>coaching per course, tailored to your pace</span></div>
-  </div>
-
-  <div class="sechead rv" id="plans">
-    <span class="kicker">Choose your route</span>
-    <h2>Pick a plan. Start today.</h2>
-    <div class="email"><input id="email" type="email" placeholder="Email for your receipt (optional)"><span>Prices in Naira. Nothing else charged.</span></div>
-  </div>
-
-  <div class="plans">
-    <div class="card plan rv">
-      <h3>LEVEL ONE — first 3 courses (Accreditation I)</h3>
-      <div class="price">₦22,500 <small>MF301 · MF302 · MF303</small></div>
-      <ul><li>Mocks, coaching and concierge for your first three courses</li><li>Finish Accreditation I this diet, then complete the rest next diet</li><li>Only ₦13,500 more unlocks all six — see the Pass Package</li></ul>
-      <button class="buy" onclick="buy('level_one',1)">Start Level One — ₦22,500</button>
-    </div>
-
-    <div class="card plan feature rv">
-      <span class="tag">Best value</span>
-      <h3>PASS PACKAGE — all 6 courses, one diet</h3>
-      <div class="price">₦36,000 <small>one-time, everything included</small></div>
-      <ul>
-        <li>Full-diet mock exams across all six courses</li>
-        <li>Personal coaching for all six courses (branch charges ₦60,000 for lectures alone)</li>
-        <li>Registration &amp; materials concierge</li>
-        <li>Proctoring-ready check + exam-day runsheet</li>
-        <li>Deadline alerts through the diet</li>
-        <li>Results tracking &amp; appeal support</li>
-      </ul>
-      <button class="buy" onclick="buy('pass_package',1)">Get the Pass Package — ₦36,000</button>
-    </div>
-
-    <div class="card plan rv d1">
-      <h3>Coaching — per course</h3>
-      <div class="price">₦5,000 <small>per course</small></div>
-      <ul><li>Guided coaching tailored to your pace</li><li>Branch classes charge ₦10,000 — you save ₦5,000</li><li>Take one course or all six</li></ul>
-      <div class="qty">Courses: <input id="qty_coaching" type="number" min="1" max="6" value="1"></div>
-      <button class="buy" onclick="buy('coaching_1',document.getElementById('qty_coaching').value||1)">Start coaching</button>
-    </div>
-
-    <div class="card plan rv d2">
-      <h3>Mock Season</h3>
-      <div class="price">₦15,000 <small>full diet, all courses</small></div>
-      <ul><li>Full-diet mocks with scoring and review</li><li>Single course: ₦3,500</li><li>Practice under real exam conditions</li></ul>
-      <button class="buy" onclick="buy('mock_full',1)">Mock the full diet — ₦15,000</button>
-      <button class="buy" style="margin-top:10px;background:var(--glass);border:1px solid var(--line);color:var(--ink)" onclick="buy('mock_single',1)">One course — ₦3,500</button>
-    </div>
-
-    <div class="card plan rv d3">
-      <h3>Registration &amp; Materials Concierge</h3>
-      <div class="price">₦5,000 <small>one-time</small></div>
-      <ul><li>We handle your diet registration properly</li><li>Source and organise your study materials</li><li>Never miss a portal deadline</li></ul>
-      <button class="buy" onclick="buy('reg_concierge',1)">Hand it over — ₦5,000</button>
-    </div>
-
-    <div class="card plan rv d2">
-      <h3>Exam-Day Command</h3>
-      <div class="price">₦19,250 <small>one diet</small></div>
-      <ul><li>Proctoring-ready check: tech, lighting, camera, backup power plan</li><li>Mock room-scan rehearsal with ABBA</li><li>Live support on exam day + results &amp; appeal follow-through</li></ul>
-      <button class="buy" onclick="buy('exam_command',1)">Command my exam day</button>
-    </div>
-
-    <div class="card plan rv d3">
-      <h3>Rescue Resit</h3>
-      <div class="price">₦6,750 <small>per course</small></div>
-      <ul><li>Failed a paper? Appeal check first, then a focused retake plan</li><li>Targeted coaching on your weak topics</li><li>Mock review until you retake with confidence</li></ul>
-      <button class="buy" onclick="buy('rescue_resit',1)">Rescue my course</button>
-    </div>
-
-    <div class="card plan rv d4">
-      <h3>For banks &amp; teams (B2B)</h3>
-      <div class="price">₦25,000 <small>per staff member</small></div>
-      <ul><li>Pass Package benefits for your staff</li><li>20% off for teams of 5 or more</li><li>Batch registration and progress reporting</li></ul>
-      <div class="qty">Staff: <input id="qty_b2b" type="number" min="1" max="100" value="5"></div>
-      <button class="buy" onclick="buy('b2b_staff',document.getElementById('qty_b2b').value||5)">Equip my team</button>
-    </div>
-  </div>
-
-  <div class="sechead rv"><span class="kicker">What's inside</span><h2>Built for this diet.</h2></div>
-  <div class="feats">
-    <div class="feat rv"><i>◈</i><b>Full-diet mocks</b><span>Every course, exam-condition practice, scored and reviewed before the real thing.</span></div>
-    <div class="feat rv d1"><i>◉</i><b>Personal coaching</b><span>Topic by topic, at your pace — from first principles to exam technique.</span></div>
-    <div class="feat rv d1"><i>◎</i><b>Concierge</b><span>Registration, materials, handouts — handled, so your time goes to studying.</span></div>
-    <div class="feat rv d2"><i>✦</i><b>Proctoring-ready check</b><span>Room scan rehearsal, camera and lighting check, power-cut plan — exam day holds no surprises.</span></div>
-    <div class="feat rv d2"><i>◔</i><b>Deadline alerts</b><span>Registration windows, docket dates, exam dates — pushed to you before they close.</span></div>
-    <div class="feat rv d3"><i>↗</i><b>Results &amp; appeal support</b><span>After the diet: results tracking, appeal checks and a rescue resit plan if needed.</span></div>
-  </div>
-
-  <div class="integrity rv"><b>Our integrity line:</b> we coach, guide and support you to pass on your own merit. We never write, take, or sit any exam for you. That is not a disclaimer — it is the entire point of education.</div>
-
-  <div class="foot">CIBN BOT is a product of <b>Institute GPT</b>, powered by <b>ABBA</b>.<br>Study support service — CIBN examination fees are paid directly to CIBN.<br>Questions? <a href="https://wa.me/2347046481828" style="color:var(--mint)">WhatsApp: wa.me/2347046481828</a></div>
-</main>
-
-<script>
-document.querySelectorAll('.rv').forEach(el=>setTimeout(()=>el.classList.add('in'),90));
-const PLANS={pass_package:'Pass Package',level_one:'Level One (3 courses)',coaching_1:'Coaching',mock_full:'Mock Season (full diet)',mock_single:'Mock Season (1 course)',reg_concierge:'Concierge',exam_command:'Exam-Day Command',rescue_resit:'Rescue Resit',b2b_staff:'B2B Pass Bundle'};
-async function buy(plan,qty){
-  const btn=event.target;const label=btn.textContent;btn.disabled=true;btn.textContent='Preparing checkout…';
-  try{
-    const r=await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({plan,quantity:parseInt(qty)||1,email:document.getElementById('email').value||''})});
-    const d=await r.json();
-    if(!d.ok||!d.checkout_url)throw new Error(d.error||'Checkout unavailable');
-    btn.textContent='Opening secure checkout…';location.href=d.checkout_url;
-  }catch(e){btn.disabled=false;btn.textContent=label;alert('Could not open checkout: '+e.message+' — reach us on WhatsApp 0704 648 1828.')}
-}
-</script>
-
-<!-- ABBA chat widget -->
-<style>
-.abba-fab{position:fixed;right:20px;bottom:20px;z-index:90;display:flex;align-items:center;gap:9px;padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,rgba(20,230,166,.16),rgba(15,181,214,.16));border:1px solid var(--line2);color:var(--ink);font-family:var(--font);font-weight:600;cursor:pointer;backdrop-filter:blur(14px);box-shadow:0 8px 32px rgba(20,230,166,.18);transition:transform .2s}
-.abba-fab:hover{transform:translateY(-2px)}
-.abba-fab .dot{width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px var(--mint);animation:pulse 2s infinite}
-.abba-fab .ic{font-size:18px;line-height:1}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.abba-panel{position:fixed;right:20px;bottom:78px;z-index:91;width:min(370px,calc(100vw - 32px));height:min(520px,70vh);border-radius:18px;background:rgba(7,20,16,.92);border:1px solid var(--line2);backdrop-filter:blur(20px);box-shadow:0 24px 64px rgba(0,0,0,.55);display:none;flex-direction:column;overflow:hidden}
-.abba-panel.open{display:flex}
-.abba-panel .ph{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
-.abba-panel .ph .dot{width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px var(--mint);animation:pulse 2s infinite}
-.abba-panel .ph b{font-size:15px}
-.abba-panel .ph small{display:block;color:var(--muted);font-size:11px;font-weight:400}
-.abba-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
-.abba-msgs::-webkit-scrollbar{width:5px}
-.abba-msgs::-webkit-scrollbar-thumb{background:var(--line2);border-radius:3px}
-.msg{max-width:86%;padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.55;white-space:pre-wrap;animation:rvup .3s ease}
-@keyframes rvup{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.msg.bot{align-self:flex-start;background:rgba(255,255,255,.06);border:1px solid var(--line);border-bottom-left-radius:4px}
-.msg.me{align-self:flex-end;background:linear-gradient(135deg,rgba(20,230,166,.2),rgba(15,181,214,.2));border:1px solid var(--line2);border-bottom-right-radius:4px}
-.msg .wa{display:inline-block;margin-top:8px;color:var(--mint);text-decoration:none;font-weight:600}
-.typing{align-self:flex-start;display:flex;gap:4px;padding:12px 16px}
-.typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:tp 1.2s infinite}
-.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
-@keyframes tp{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
-.abba-in{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
-.abba-in input{flex:1;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:999px;padding:11px 16px;color:var(--ink);font-family:var(--font);font-size:13.5px;outline:none}
-.abba-in input:focus{border-color:var(--line2)}
-.abba-in button{background:linear-gradient(135deg,var(--mint),var(--teal));border:0;border-radius:999px;padding:0 18px;color:#04110d;font-weight:700;cursor:pointer;font-family:var(--font)}
-.chips{display:flex;gap:6px;flex-wrap:wrap;padding:0 16px 10px}
-.chip{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:5px 12px;font-size:11.5px;cursor:pointer;font-family:var(--font)}
-.chip:hover{border-color:var(--line2);color:var(--ink)}
-</style>
-<button class="abba-fab" id="abbaFab" aria-label="Chat with ABBA"><span class="ic">◈</span> Chat with ABBA <span class="dot"></span></button>
-<div class="abba-panel" id="abbaPanel">
-  <div class="ph"><span class="dot"></span><div><b>ABBA</b><small>CIBN BOT study companion · Institute GPT</small></div></div>
-  <div class="abba-msgs" id="abbaMsgs">
-    <div class="msg bot">Hello! I am ABBA, your CIBN study companion. Ask me anything about your MCP courses, the October diet, or how to prepare — or tap a quick question below.</div>
-  </div>
-  <div class="chips">
-    <button class="chip" data-q="Map the current CIBN courses and tell me which ones clash">Map courses + clashes</button>
-    <button class="chip" data-q="I work in operations. Which CIBN areas and courses should I explore?">Explore my field</button>
-    <button class="chip" data-q="Show me CIBN handouts, study packs and their observed prices">Handouts + prices</button>
-    <button class="chip" data-q="What CIBN portal actions or exam rules do I need to be careful about?">Rules + boundaries</button>
-  </div>
-  <div class="abba-in">
-    <input id="abbaInput" type="text" placeholder="Ask ABBA anything about your CIBN journey..." maxlength="500">
-    <button id="abbaSend">Send</button>
   </div>
 </div>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow"><i></i> ABBA · CIBN intelligence layer</div>
+        <h1>One place for the <span class="accent">whole CIBN journey.</span></h1>
+        <p class="lead">Not just an MCP mock-exam site. CIBN BOT helps you work out where you are, what you should take, what your timetable allows, what the portal is asking for, which materials you need, how to prepare, and what comes next.</p>
+        <div class="hero-actions">
+          <button class="btn primary" id="heroAsk">Ask ABBA now</button>
+          <a class="btn secondary" href="#map">Explore the CIBN map</a>
+        </div>
+        <div class="meta-row">
+          <span>Student Member</span><span>Not yet registered</span><span>Mid-programme</span><span>Preparing</span><span>Resitting</span>
+        </div>
+        <div class="banner"><b>October 2026:</b> the current owner-supplied campaign evidence places registration closing on Wednesday 23 September. Treat that as a portal/deployment observation until CIBN publishes the same deadline officially. The official CIBN timetable is the authority for paper dates and session rules.</div>
+      </div>
+
+      <aside class="abba-shell" id="ask">
+        <div class="abba-head">
+          <div class="abba-title"><span class="abba-dot"></span><div><b>ABBA</b><small>your CIBN journey companion</small></div></div>
+          <div class="ready">READY</div>
+        </div>
+        <div class="abba-body">
+          <div class="abba-prompt">Start with your situation. ABBA uses the answer to make the next question useful instead of making you fill a long form.</div>
+          <div class="choice-row">
+            <div class="field"><label>Where are you?</label><select id="stage"><option>Not yet registered</option><option>Student Member</option><option>Already on a programme</option><option>Preparing for an exam diet</option><option>Resitting / after results</option></select></div>
+            <div class="field"><label>Your area</label><select id="area"><option>Not sure yet</option><option>Operations</option><option>Credit / Lending</option><option>Audit</option><option>Risk</option><option>Compliance / Regulation</option><option>Digital / Fintech</option><option>Agency Banking</option><option>Treasury / Markets</option><option>SME</option><option>Public Sector</option><option>Non-Interest Banking</option><option>Deposit Insurance / Central Banking</option><option>Sustainable Banking / ESG</option></select></div>
+          </div>
+          <textarea class="question" id="heroQuestion" placeholder="For example: I am a Student Member working in operations. Which CIBN route should I look at next?"></textarea>
+          <div class="quick">
+            <button data-q="Map the current MCP courses and tell me whether any selected papers actually clash">MCP + timetable</button>
+            <button data-q="I work in operations. Which CIBN areas should I explore?">Explore my field</button>
+            <button data-q="Show me CIBN handouts and their observed prices">Handouts + prices</button>
+            <button data-q="Explain the exemption boundaries and what I should not do">Exemption rules</button>
+          </div>
+          <div class="askrow">
+            <button class="btn primary" id="heroSend">Ask ABBA</button>
+            <button class="btn secondary" id="openFullChat">Open full chat</button>
+          </div>
+        </div>
+        <div class="abba-messages" id="miniMessages"></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">The journey</div><h2>From “where do I start?” to “what next?”</h2><p class="sub">The product is organized around the person and the stage, not around a pile of disconnected features.</p></div>
+    </div>
+    <div class="timeline">
+      <article class="step"><div class="n">01 · Discover</div><h3>Find your route</h3><p>ACIB, MCP, CIB, Agency Banking, E-Payment and specialist certification paths — with field-of-work discovery.</p></article>
+      <article class="step"><div class="n">02 · Register</div><h3>Get the portal right</h3><p>Understand membership, programme selection, exemption paths, materials and the next required action.</p></article>
+      <article class="step"><div class="n">03 · Prepare</div><h3>Learn at your pace</h3><p>Study plans, coached explanations, practice, examiner-report learning and mock sessions.</p></article>
+      <article class="step"><div class="n">04 · Sit & continue</div><h3>Exam → results → next</h3><p>Readiness, remote-proctoring checks, results support, appeals and a focused resit path when necessary.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="map">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">CIBN map</div><h2>MCP is the campaign. CIBN is the product.</h2><p class="sub">The intelligence layer is designed to understand the wider CIBN catalogue and route a person to the relevant path.</p></div>
+      <a class="section-link" href="https://www.cibng.org/" target="_blank" rel="noopener">Open CIBN →</a>
+    </div>
+    <div class="programmes">
+      <article class="program"><div class="tag">Professional</div><h3>ACIB</h3><p>Diploma, Intermediate Professional and Chartered Banker examination routes.</p><button class="mini-action" data-q="Explain the ACIB Diploma, Intermediate and Chartered Banker routes">Ask ABBA</button></article>
+      <article class="program"><div class="tag">Immediate</div><h3>MCP</h3><p>Microfinance I + Microfinance II leading to the Microfinance Certificate. October is the current campaign window.</p><button class="mini-action" data-q="Explain the current MCP six-course route and the October timetable">Ask ABBA</button></article>
+      <article class="program"><div class="tag">Foundation</div><h3>Certificate in Banking</h3><p>Three stages, from CIB I through CIB III, for the Certificate in Banking.</p><button class="mini-action" data-q="Explain the three stages of the Certificate in Banking and the current fees">Ask ABBA</button></article>
+      <article class="program"><div class="tag">Specialist</div><h3>Agency Banking</h3><p>Three levels covering agency law, customer relationships, inclusion, operations, risk, digital services and experiential learning.</p><button class="mini-action" data-q="Map the Agency Banking levels and courses">Ask ABBA</button></article>
+      <article class="program"><div class="tag">Digital</div><h3>Professional E-Payments</h3><p>CePA and CePP routes around payments, identity, operations, technology, security and compliance.</p><button class="mini-action" data-q="Explain CePA and CePP and the current published exam fees">Ask ABBA</button></article>
+      <article class="program"><div class="tag">Certification</div><h3>Specialist programmes</h3><p>Banking Operations, Digital Banking, Reporting & Compliance, Sustainable Banking, Deposit Insurance and more.</p><button class="mini-action" data-q="What specialist CIBN certification areas can I explore?">Ask ABBA</button></article>
+      <article class="program"><div class="tag">Boundary</div><h3>Exemptions</h3><p>Public exemption discovery plus member application flows, with clear boundaries for failed subjects and timing.</p><button class="mini-action" data-q="How does the CIBN exemption path work and what are the boundaries?">Ask ABBA</button></article>
+      <article class="program"><div class="tag">Resources</div><h3>Bookshop · Library · Reports</h3><p>Study packs, downloads, examiner reports, digital library and the institute's resource hub.</p><button class="mini-action" data-q="Find CIBN publications, examiner reports and materials">Ask ABBA</button></article>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="mcp">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">October 2026 · MCP</div><h2>The timetable, without the guesswork.</h2><p class="sub">The official timetable says candidates cannot combine courses exceeding 3 hours at a particular session. A shared session is therefore not automatically a clash.</p></div>
+      <a class="section-link" href="https://www.cibng.org/micro-finance-certification-program-mcp/" target="_blank" rel="noopener">CIBN MCP page →</a>
+    </div>
+    <div class="mcp-grid">
+      <div class="schedule">
+        <div class="session"><div><div class="date">Tue · 06 Oct</div><div class="time">09:00–12:00</div></div><div class="papers">MF301 · MF302</div><div class="dur">90 + 90 min</div></div>
+        <div class="session"><div><div class="date">Tue · 06 Oct</div><div class="time">14:00–17:00</div></div><div class="papers">MF303 · MF402</div><div class="dur">90 + 90 min</div></div>
+        <div class="session"><div><div class="date">Wed · 07 Oct</div><div class="time">09:00–12:00</div></div><div class="papers">MF401</div><div class="dur">90 min</div></div>
+        <div class="session"><div><div class="date">Wed · 07 Oct</div><div class="time">14:00–17:00</div></div><div class="papers">MF404</div><div class="dur">90 min</div></div>
+        <div class="rule"><b>Important:</b> the official rule is a 3-hour maximum per session. The two-paper MCP sessions above total exactly 3 hours. ABBA will not call them a clash merely because they share a session. Confirm your actual selected elective in the portal.</div>
+      </div>
+      <div class="notice">
+        <strong>Six-course MCP route</strong>
+        <div class="big">3 + 2 + 1</div>
+        <p>Three Microfinance I papers, two mandatory Microfinance II papers, and one elective. CIBN's current page lists MF403 Digital Finance and MF404 SME Management as the two elective options.</p>
+        <div class="official">Official MCP exam fee for 6 subjects · ₦32,500</div>
+        <div class="official">Remote Online Proctoring Platform</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">Published exam fees</div><h2>Institutional fees stay separate from our service.</h2><p class="sub">These are the current CIBN-published examination fee tables captured by ABBA. CIBN charges are not CIBN BOT charges.</p></div>
+    </div>
+    <div class="fees">
+      <table>
+        <thead><tr><th>Programme</th><th>1 course</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+        <tbody>
+          <tr><td><strong>ACIB Diploma</strong></td><td>₦17,000</td><td>₦23,500</td><td>₦31,500</td><td>₦41,000</td><td>—</td><td>—</td></tr>
+          <tr><td><strong>ACIB Intermediate Professional</strong></td><td>₦27,500</td><td>₦40,750</td><td>₦54,000</td><td>₦67,250</td><td>—</td><td>—</td></tr>
+          <tr><td><strong>ACIB Chartered Banker</strong></td><td>₦35,000</td><td>₦52,000</td><td>₦69,000</td><td>₦86,000</td><td>₦103,000</td><td>₦120,000</td></tr>
+          <tr><td><strong>MCP</strong></td><td>₦8,750</td><td>₦13,500</td><td>₦18,250</td><td>₦23,000</td><td>₦27,750</td><td>₦32,500</td></tr>
+          <tr><td><strong>Agency Banking</strong></td><td>₦11,250</td><td>₦16,000</td><td>₦20,750</td><td>₦25,500</td><td>₦30,250</td><td>₦35,000</td></tr>
+          <tr><td><strong>CePA</strong></td><td>₦35,000</td><td>₦57,000</td><td>₦79,000</td><td>₦101,000</td><td>₦123,000</td><td>₦145,000</td></tr>
+          <tr><td><strong>CePP</strong></td><td>₦38,000</td><td>₦60,000</td><td>₦82,000</td><td>₦104,000</td><td>₦126,000</td><td>₦148,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="materials">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">Materials desk</div><h2>Handouts are part of the journey.</h2><p class="sub">CIBN has a Book Shop / Book Search, Downloads and a Digital Library. ABBA can help you locate a title and show the observed portal price where our evidence contains it.</p></div>
+      <a class="section-link" href="https://portal.cibng.org/" target="_blank" rel="noopener">Open CIBN portal →</a>
+    </div>
+    <div class="materials">
+      <div class="material-card">
+        <div class="kicker">Ask for a title</div>
+        <h3 style="font-family:var(--display);font-size:25px;letter-spacing:-.04em;margin:7px 0 0">What are you looking for?</h3>
+        <div class="searchbar"><input id="materialQuery" placeholder="e.g. MF301, Digital Identity, examiner report"><button class="btn primary" id="materialAsk" style="min-width:90px">Find</button></div>
+        <div class="results" id="materialResults"></div>
+      </div>
+      <div class="material-card">
+        <div class="kicker">What ABBA knows</div>
+        <h3 style="font-family:var(--display);font-size:25px;letter-spacing:-.04em;margin:7px 0 0">Titles, prices, reports and boundaries.</h3>
+        <p class="sub">The evidence catalog includes paid study packs, syllabus documents and downloadable examiner reports. Prices shown in the catalog are portal observations, not promises that the CIBN storefront has not changed.</p>
+        <button class="btn secondary" id="materialsChat">Ask ABBA about materials</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">CIBN BOT services</div><h2>We sell the journey, not just the mock.</h2><p class="sub">These are Institute GPT / CIBN BOT commercial services. CIBN institutional examination fees remain separate and are paid to CIBN.</p></div>
+    </div>
+    <div class="services">
+      <article class="service"><h3>Level One</h3><div class="price">₦22,500</div><p>First three MCP courses.</p><button class="buy" data-plan="level_one" data-label="Start Level One — ₦22,500">Start</button></article>
+      <article class="service"><h3>Pass Package</h3><div class="price">₦36,000</div><p>All six MCP courses in one diet.</p><button class="buy" data-plan="pass_package" data-label="Get the Pass Package — ₦36,000">Get package</button></article>
+      <article class="service"><h3>Coaching</h3><div class="price">₦5,000</div><p>Per course, tailored to your pace.</p><button class="buy" data-plan="coaching_1" data-label="Start coaching">Start</button></article>
+      <article class="service"><h3>Mock Season</h3><div class="price">₦15,000</div><p>Full diet; single course ₦3,500.</p><button class="buy" data-plan="mock_full" data-label="Mock the full diet — ₦15,000">Start</button></article>
+      <article class="service"><h3>Concierge</h3><div class="price">₦5,000</div><p>Registration + materials support.</p><button class="buy" data-plan="reg_concierge" data-label="Hand it over — ₦5,000">Start</button></article>
+      <article class="service"><h3>Exam-Day Command</h3><div class="price">₦19,250</div><p>Readiness check + exam-day support.</p><button class="buy" data-plan="exam_command" data-label="Command my exam day">Start</button></article>
+      <article class="service"><h3>Rescue Resit</h3><div class="price">₦6,750</div><p>Per course, after a failed paper.</p><button class="buy" data-plan="rescue_resit" data-label="Rescue my course">Start</button></article>
+      <article class="service"><h3>B2B staff</h3><div class="price">₦25,000</div><p>Per staff member; 20% off 5+.</p><button class="buy" data-plan="b2b_staff" data-label="Equip my team">Talk to ABBA</button></article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="journey-band">
+      <div><h3>Your route is yours.</h3><p>Tell ABBA what you are doing now, what is confusing you, and how fast you want to move. The system is designed to adapt around that — while keeping institutional authority, money movement and exam integrity in the correct human-controlled boundaries.</p></div>
+      <button class="btn primary" id="bottomAsk">Ask ABBA</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="wrap footer">
+  <div class="footer-grid">
+    <div>CIBN BOT · Powered by ABBA · A product of Institute GPT</div>
+    <div><a href="https://www.cibng.org/micro-finance-certification-program-mcp/" target="_blank" rel="noopener">CIBN MCP</a> · <a href="https://portal.cibng.org/" target="_blank" rel="noopener">CIBN Portal</a> · <a href="https://wa.me/2347046481828" target="_blank" rel="noopener">Human support</a></div>
+  </div>
+</footer>
+
+<nav class="mobile-dock" aria-label="Primary">
+  <a class="dock active" href="#ask">⌁<span>Ask</span></a>
+  <a class="dock" href="#map">◈<span>Courses</span></a>
+  <a class="dock" href="#mcp">◷<span>October</span></a>
+  <a class="dock" href="#materials">▤<span>Materials</span></a>
+  <a class="dock" href="https://wa.me/2347046481828">?<span>Human</span></a>
+</nav>
+
+<div class="modal" id="chatModal" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-head"><div class="abba-title"><span class="abba-dot"></span><div><b>ABBA</b><small>CIBN intelligence layer</small></div></div><button id="closeChat" aria-label="Close">×</button></div>
+    <div class="chatlog" id="chatLog"><div class="bubble ai">Hello. I am ABBA. Tell me what you are trying to do with CIBN and I will work from your stage, programme and pace.</div></div>
+    <div class="chatinput"><input id="chatInput" placeholder="Ask about a course, fee, timetable, material or next step" maxlength="600"><button id="chatSend">Send</button></div>
+  </div>
+</div>
+
 <script>
 (function(){
-  var fab=document.getElementById('abbaFab'),panel=document.getElementById('abbaPanel'),msgs=document.getElementById('abbaMsgs'),input=document.getElementById('abbaInput'),send=document.getElementById('abbaSend');
   var API='https://noun-student-bot-dashboard.vercel.app/api/ai-study';
-  var busy=false;
-  fab.addEventListener('click',function(){panel.classList.toggle('open');if(panel.classList.contains('open'))input.focus();});
-  function add(cls,text){var d=document.createElement('div');d.className='msg '+cls;d.textContent=text;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;}
-  var lastQuestion='';
-  function addSources(sources){
-    if(!Array.isArray(sources)||!sources.length)return;
-    var unique=[];var seen={};
-    sources.forEach(function(s){if(s&&s.url&&!seen[s.url]){seen[s.url]=1;unique.push(s);}});
-    if(!unique.length)return;
-    var d=document.createElement('div');d.className='msg bot';d.innerHTML='<span style="color:var(--dim)">Sources:</span> '+unique.slice(0,4).map(function(s,i){return '<a class="wa" style="margin-right:8px" href="'+s.url+'" target="_blank" rel="noopener">'+(s.title||('Source '+(i+1))).replace(/</g,'&lt;')+'</a>';}).join('');msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
+  var busy=false, lastQuestion='';
+  var modal=document.getElementById('chatModal'), log=document.getElementById('chatLog'), input=document.getElementById('chatInput');
+  function openChat(){modal.classList.add('open');modal.setAttribute('aria-hidden','false');setTimeout(function(){input.focus();},40);}
+  function closeChat(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');}
+  function bubble(kind,text){var el=document.createElement('div');el.className='bubble '+kind;el.textContent=text;log.appendChild(el);log.scrollTop=log.scrollHeight;return el;}
+  function addSource(text){var el=document.createElement('div');el.className='source-row';el.textContent=text;log.appendChild(el);}
+  function composed(q){var s=document.getElementById('stage').value;var a=document.getElementById('area').value;return '[Candidate stage: '+s+'][Work area: '+a+'] '+q;}
+  async function ask(q){
+    if(busy || !q)return;
+    busy=true;lastQuestion=q;openChat();bubble('me',q);
+    var wait=bubble('ai','ABBA is checking the current CIBN evidence…');
+    try{
+      var r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product:'cibn',message:composed(q),mode:'study'})});
+      var d=await r.json();
+      wait.remove();
+      if(d&&d.ok&&d.answer){bubble('ai',d.answer);if(d.degraded)addSource('AI engine temporarily unavailable; this answer came from the local evidence catalog.');if(Array.isArray(d.sources)&&d.sources.length)addSource('Sources: '+d.sources.slice(0,3).map(function(s){return s.title||s.url;}).join(' · '));}
+      else{bubble('ai','I could not complete that request right now, but your question was not sent to WhatsApp. Try it again in a moment.');}
+    }catch(e){wait.remove();bubble('ai','The connection failed before the answer arrived. Your question was not redirected to WhatsApp. Please try again.');}
+    finally{busy=false;}
   }
-  function showRetry(){var d=document.createElement('div');d.className='msg bot';d.innerHTML='ABBA is temporarily at capacity. Your question was not lost. <button id="abbaRetry" class="chip" style="margin-top:8px">Try again</button>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;document.getElementById('abbaRetry').addEventListener('click',function(){ask(lastQuestion);});}
-  function showHuman(){var d=document.createElement('div');d.className='msg bot';d.innerHTML='I can connect you to a human for registration, support or another matter that needs a person. <a class="wa" href="https://wa.me/2347046481828" target="_blank" rel="noopener">Open WhatsApp →</a>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
-  function ask(q){
-    if(busy)return;busy=true;lastQuestion=q;
-    add('me',q);
-    var t=document.createElement('div');t.className='typing';t.innerHTML='<i></i><i></i><i></i>';msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;
-    fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product:'cibn',message:q,mode:'study'})})
-      .then(function(r){return r.json();})
-      .then(function(d){t.remove();if(d&&d.ok&&d.answer){add('bot',d.answer);addSources(d.sources);}else{showRetry();}})
-      .catch(function(){t.remove();showRetry();})
-      .then(function(){busy=false;});
-  }
-  send.addEventListener('click',function(){var q=input.value.trim();if(q){input.value='';ask(q);}});
+  document.getElementById('heroSend').addEventListener('click',function(){ask(document.getElementById('heroQuestion').value.trim()||'Help me understand where I should start with CIBN.');});
+  document.getElementById('heroAsk').addEventListener('click',function(){document.getElementById('ask').scrollIntoView({behavior:'smooth'});setTimeout(openChat,300);});
+  document.getElementById('openFullChat').addEventListener('click',openChat);
+  document.getElementById('bottomAsk').addEventListener('click',function(){document.getElementById('ask').scrollIntoView({behavior:'smooth'});});
+  document.getElementById('closeChat').addEventListener('click',closeChat);
+  modal.addEventListener('click',function(e){if(e.target===modal)closeChat();});
+  document.getElementById('chatSend').addEventListener('click',function(){var q=input.value.trim();if(q){input.value='';ask(q);}});
   input.addEventListener('keydown',function(e){if(e.key==='Enter'){var q=input.value.trim();if(q){input.value='';ask(q);}}});
-  document.querySelectorAll('.chip').forEach(function(ch){ch.addEventListener('click',function(){ask(ch.getAttribute('data-q'));});});
+  document.querySelectorAll('[data-q]').forEach(function(btn){btn.addEventListener('click',function(){ask(btn.getAttribute('data-q'));});});
+  document.getElementById('materialsChat').addEventListener('click',function(){ask('Show me CIBN handouts, study packs, examiner reports and their observed prices.');});
+  document.getElementById('materialAsk').addEventListener('click',function(){var q=document.getElementById('materialQuery').value.trim();if(q)ask('Find the CIBN material or publication for: '+q);});
+  document.getElementById('materialQuery').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('materialAsk').click();});
+  var email=document.createElement('input');
+  email.type='email';email.placeholder='Email for secure checkout (optional)';email.className='email-line';email.id='checkoutEmail';
+  document.querySelectorAll('.buy').forEach(function(btn){
+    btn.addEventListener('click',async function(){
+      var plan=btn.getAttribute('data-plan');
+      if(plan==='b2b_staff'){ask('I want to equip a bank team through the CIBN BOT B2B service. Explain the package and what you need from me.');return;}
+      var old=btn.textContent;btn.disabled=true;btn.textContent='Preparing…';
+      try{
+        var r=await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({plan:plan,quantity:1,email:(document.getElementById('checkoutEmail')||{}).value||''})});
+        var d=await r.json();
+        if(!d.ok||!d.checkout_url)throw new Error(d.error||'Checkout unavailable');
+        location.href=d.checkout_url;
+      }catch(e){
+        btn.disabled=false;btn.textContent=old;
+        openChat();bubble('ai','Secure checkout is not available from this deployment yet. I have not redirected you because of an AI failure. For payment support, use the Human Support link above.');
+      }
+    });
+  });
 })();
 </script>
-<!-- /ABBA chat widget -->
-
 </body>
 </html>
