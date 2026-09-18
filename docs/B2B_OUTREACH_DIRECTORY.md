@@ -12,6 +12,9 @@ NAMB — National Association of Microfinance Banks (apex body, ~1,000 member MF
 
 ## Tier 1 — Leading MFBs (emails/websites)
 
+STARTER (owner-provided, outreach begins here):
+- Muamala Microfinance Bank — muamalamfb@gmail.com (owner-supplied; Kano non-interest MFB)
+
 - LAPO Microfinance Bank — info@lapo-nigeria.org (largest national MFB)
 - NPF Microfinance Bank Plc — info@npfmicrofinancebankplc.ng (public MFB, Lagos)
 - AB Microfinance Bank Nigeria — ab-mfbnigeria.com (email format First.Last@ab-mfbnigeria.com; 1.3k staff)
@@ -27,6 +30,8 @@ NAMB — National Association of Microfinance Banks (apex body, ~1,000 member MF
 - Digitvant MFB (Ikeja) — contact@digitant.com
 - FBN Microfinance Bank — fbnmfb.com (First Bank group, contact form)
 - FCMB Microfinance Bank — fcmbmicrofinancebank.com (contact form)
+- Source Microfinance Bank (Lagos/Agege) — support@mysourcebank.com · +234 708 063 7689
+- Maal Non-Interest MFB (Abuja) — contact@maalbanking.com
 
 ## Tier 2 — Full national directory
 
@@ -40,7 +45,7 @@ Subject: Get your staff MCP-ready for the October CIBN diet
 
 Dear [Name / Training & Human Resources team],
 
-The CIBN Microfinance Certification Programme (MCP) October 2026 diet holds on 6-7 October, and CIBN registration is open now. This diet is fully remote-proctored — candidates lock in a room, show ID and scan their environment before starting — and unprepared candidates feel it most.
+The CIBN Microfinance Certification Programme (MCP) October 2026 diet holds on 6-7 October, and CIBN registration closes this Wednesday, 23 September. This diet is fully remote-proctored — candidates lock in a room, show ID and scan their environment before starting — and unprepared candidates feel it most.
 
 Institute GPT runs CIBN BOT, a CIBN exam-prep platform built for working banking staff:
 
@@ -49,7 +54,7 @@ Institute GPT runs CIBN BOT, a CIBN exam-prep platform built for working banking
 3. Registration concierge for CIBN enrollment
 4. Exam-day readiness check for the remote proctoring platform (tech, environment, backup power plan)
 
-The official CIBN exam fee (NGN 32,500) is paid directly to CIBN. Our Pass Package is NGN 30,000 per candidate — under half the branch-class route — with special group rates for banks sponsoring 5 or more staff.
+The official CIBN exam fee (NGN 32,500) is paid directly to CIBN. Two routes: Level One (first 3 courses, Accreditation I) NGN 22,500, or the full Pass Package (all 6 courses) NGN 36,000 — NGN 29,000 less than the branch route. Banks sponsoring staff: B2B Pass Bundle NGN 25,000 per staff, 20% off teams of 5 or more.
 
 Would a 15-minute call this week suit, to walk through how we can get your cohort ready in the time remaining?
 
