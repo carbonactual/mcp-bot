@@ -1,0 +1,17 @@
+name: CIBN BOT Static QA
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  pwa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate installable web app contract
+        run: node --test tests/pwa.test.js
