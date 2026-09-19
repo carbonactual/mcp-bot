@@ -4,6 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07100d">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CIBN BOT">
+<link rel="manifest" href="/manifest.webmanifest">
 <meta name="description" content="CIBN BOT — ABBA for the whole Chartered Institute of Bankers of Nigeria journey: discover, register, study, prepare, sit, review and continue.">
 <title>CIBN BOT — ABBA for your CIBN journey</title>
 <style>
@@ -203,6 +208,7 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
   .section-link{display:inline-block;margin-top:12px}
   .journey-band{grid-template-columns:1fr}
   .journey-band .btn{width:auto}
+  .install-app[hidden]{display:none}
   .mobile-dock{display:grid;position:fixed;left:8px;right:8px;bottom:8px;z-index:120;grid-template-columns:repeat(5,1fr);gap:3px;padding:6px;border:1px solid var(--line);border-radius:18px;background:rgba(7,16,13,.92);backdrop-filter:blur(18px);box-shadow:0 18px 50px rgba(0,0,0,.4);padding-bottom:calc(6px + env(safe-area-inset-bottom))}
   .dock{display:grid;place-items:center;gap:2px;min-height:45px;border-radius:12px;color:var(--dim);font-size:8.5px;font-weight:750;border:0;background:transparent;padding:0}
   .dock.active,.dock:hover{background:rgba(57,224,161,.08);color:var(--green)}
@@ -261,6 +267,7 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
         <p class="lead">Not just an MCP mock-exam site. CIBN BOT helps you work out where you are, what you should take, what your timetable allows, what the portal is asking for, which materials you need, how to prepare, and what comes next.</p>
         <div class="hero-actions">
           <button class="btn primary" id="heroAsk">Ask ABBA now</button>
+          <button class="btn secondary install-app" id="installApp" type="button" hidden>Install CIBN BOT</button>
           <a class="btn secondary" href="#map">Explore the CIBN map</a>
         </div>
         <div class="meta-row">
@@ -506,6 +513,22 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
 (function(){
   var API='https://noun-student-bot-dashboard.vercel.app/api/ai-study';
   var CATALOG_API='/api/cibn-catalog';
+  var SESSION_STORAGE_KEY='cibn_abba_session_id';
+  var sessionId=(function(){
+    try{
+      var fromUrl=new URLSearchParams(location.search).get('session');
+      var stored=localStorage.getItem(SESSION_STORAGE_KEY);
+      var value=fromUrl||stored;
+      if(!value){
+        value=(window.crypto&&crypto.randomUUID)?crypto.randomUUID().replace(/^/,'cibn-session-'):'cibn-session-'+Date.now()+'-'+Math.random().toString(16).slice(2);
+      }
+      if(value.indexOf('cibn-session-')!==0)value='cibn-session-'+value;
+      localStorage.setItem(SESSION_STORAGE_KEY,value);
+      return value;
+    }catch(e){
+      return 'cibn-session-'+Date.now()+'-'+Math.random().toString(16).slice(2);
+    }
+  })();
   function escapeHtml(value){
     return String(value==null?'':value).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});
   }
@@ -589,6 +612,24 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
   function closeHuman(){humanModal.classList.remove('open');humanModal.setAttribute('aria-hidden','true');}
   function bubble(kind,text){var el=document.createElement('div');el.className='bubble '+kind;el.textContent=text;log.appendChild(el);log.scrollTop=log.scrollHeight;return el;}
   function addSource(text){var el=document.createElement('div');el.className='source-row';el.textContent=text;log.appendChild(el);}
+  function restoreSessionIdentity(value){
+    if(value){sessionId=value;try{localStorage.setItem(SESSION_STORAGE_KEY,value);}catch(e){}}
+  }
+  async function resumeCibnSession(){
+    try{
+      var r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product:'cibn',action:'resume',session_id:sessionId,channel:'web'})});
+      var d=await r.json();
+      if(!r.ok||!d.ok)return;
+      restoreSessionIdentity(d.session_id);
+      var events=(d.continuity&&d.continuity.events)||[];
+      var visible=events.filter(function(e){return e.payload&&(e.payload.question||e.payload.answer);}).slice(-6);
+      visible.forEach(function(e){
+        if(e.payload.question)bubble('me',e.payload.question);
+        if(e.payload.answer)bubble('ai',e.payload.answer);
+      });
+      if(visible.length)addSource('Resumed your CIBN BOT session. Your prior context stays with this session.');
+    }catch(e){}
+  }
   function composed(q){var s=document.getElementById('stage').value;var a=document.getElementById('area').value;return '[Candidate stage: '+s+'][Work area: '+a+'] '+q;}
   async function ask(q){
     if(busy || !q)return;
@@ -599,7 +640,7 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
     busy=true;lastQuestion=q;openChat();bubble('me',q);
     var wait=bubble('ai','ABBA is checking the current CIBN evidence…');
     try{
-      var r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product:'cibn',message:composed(q),mode:'study'})});
+      var r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product:'cibn',message:composed(q),mode:'study',session_id:sessionId,channel:'web'})});
       var d=await r.json();
       wait.remove();
       if(d&&d.ok&&d.answer){bubble('ai',d.answer);if(d.degraded)addSource('AI engine temporarily unavailable; this answer came from the local evidence catalog.');if(Array.isArray(d.sources)&&d.sources.length)addSource('Sources: '+d.sources.slice(0,3).map(function(s){return s.title||s.url;}).join(' · '));}
@@ -608,6 +649,33 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
     finally{busy=false;}
   }
   loadCibnCatalog();
+  resumeCibnSession();
+
+  var deferredInstallPrompt=null;
+  var installButton=document.getElementById('installApp');
+  function setInstallVisibility(show){if(!installButton)return;installButton.hidden=!show;}
+  window.addEventListener('beforeinstallprompt',function(event){
+    event.preventDefault();
+    deferredInstallPrompt=event;
+    setInstallVisibility(true);
+  });
+  window.addEventListener('appinstalled',function(){
+    deferredInstallPrompt=null;
+    setInstallVisibility(false);
+  });
+  if('serviceWorker' in navigator){
+    window.addEventListener('load',function(){
+      navigator.serviceWorker.register('/sw.js').catch(function(error){console.warn('CIBN PWA registration:',error);});
+    });
+  }
+  if(installButton)installButton.addEventListener('click',async function(){
+    if(!deferredInstallPrompt)return;
+    deferredInstallPrompt.prompt();
+    try{await deferredInstallPrompt.userChoice;}catch(e){}
+    deferredInstallPrompt=null;
+    setInstallVisibility(false);
+  });
+
   document.getElementById('selectionCheck').addEventListener('click',validateCibnSelection);
   document.getElementById('selectionCodes').addEventListener('keydown',function(e){if(e.key==='Enter')validateCibnSelection();});
 
@@ -626,10 +694,11 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
     humanSubmit.disabled=true;humanSubmit.textContent='Sending…';humanStatus.className='human-status show';humanStatus.textContent='ABBA is accepting the request…';
     var data=Object.fromEntries(new FormData(humanForm).entries());
     try{
-      var r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product:'cibn',mode:'service',message:data.message,name:data.name,phone:data.phone,email:data.email,stage:data.stage,area:data.area,service:data.service,channel:'web'})});
+      var r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({product:'cibn',mode:'service',message:data.message,name:data.name,phone:data.phone,email:data.email,stage:data.stage,area:data.area,service:data.service,session_id:sessionId,channel:'web'})});
       var d=await r.json();
       if(!r.ok||!d.ok||!d.handoff||!d.handoff.handoffUrl)throw new Error(d.error||'Human support could not be queued');
-      humanStatus.textContent='Accepted by ABBA. Opening the service handoff…';
+      restoreSessionIdentity(d.session_id||d.handoff.sessionId||sessionId);
+      humanStatus.textContent='Accepted by ABBA. Opening the WhatsApp service handoff with your context…';
       setTimeout(function(){location.href=d.handoff.handoffUrl;},250);
     }catch(err){
       humanStatus.textContent=err.message||'We could not queue the service request right now. Please try again.';
