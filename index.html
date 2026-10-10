@@ -486,7 +486,7 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
     <form class="human-body" id="humanForm">
       <div class="human-grid">
         <div class="human-field"><label for="humanName">Name</label><input id="humanName" name="name" autocomplete="name" required></div>
-        <div class="human-field"><label for="humanPhone">Phone / WhatsApp</label><input id="humanPhone" name="phone" inputmode="tel" autocomplete="tel" required></div>
+        <div class="human-field"><label for="humanPhone">Phone number</label><input id="humanPhone" name="phone" inputmode="tel" autocomplete="tel" required></div>
       </div>
       <div class="human-grid">
         <div class="human-field"><label for="humanEmail">Email</label><input id="humanEmail" name="email" type="email" autocomplete="email"></div>
@@ -644,8 +644,8 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
       var d=await r.json();
       wait.remove();
       if(d&&d.ok&&d.answer){bubble('ai',d.answer);if(d.degraded)addSource('AI engine temporarily unavailable; this answer came from the local evidence catalog.');if(Array.isArray(d.sources)&&d.sources.length)addSource('Sources: '+d.sources.slice(0,3).map(function(s){return s.title||s.url;}).join(' · '));}
-      else{bubble('ai','I could not complete that request right now, but your question was not sent to WhatsApp. Try it again in a moment.');}
-    }catch(e){wait.remove();bubble('ai','The connection failed before the answer arrived. Your question was not redirected to WhatsApp. Please try again.');}
+      else{bubble('ai','I could not complete that request right now. Try it again in a moment.');}
+    }catch(e){wait.remove();bubble('ai','The connection failed before the answer arrived. Please try again.');}
     finally{busy=false;}
   }
   loadCibnCatalog();
@@ -698,7 +698,7 @@ linear-gradient(145deg,rgba(57,224,161,.07),rgba(47,195,217,.04));}
       var d=await r.json();
       if(!r.ok||!d.ok||!d.handoff||!d.handoff.handoffUrl)throw new Error(d.error||'Human support could not be queued');
       restoreSessionIdentity(d.session_id||d.handoff.sessionId||sessionId);
-      humanStatus.textContent='Accepted by ABBA. Opening the WhatsApp service handoff with your context…';
+      humanStatus.textContent='Accepted by ABBA. Opening the email service handoff with your context…';
       setTimeout(function(){location.href=d.handoff.handoffUrl;},250);
     }catch(err){
       humanStatus.textContent=err.message||'We could not queue the service request right now. Please try again.';
