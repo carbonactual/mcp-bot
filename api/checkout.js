@@ -33,7 +33,7 @@ module.exports = async (req, res) => {
   if (!secret) {
     return res.status(200).json({
       ok: false,
-      error: "Online payment activates shortly. Reach us on WhatsApp 0704 648 1828 to lock in your spot now — registration closes Wednesday."
+      error: "Online payment activates shortly. Chat with ABBA on this page (bottom right) or email institutegpt@gmail.com to lock in your spot now — registration closes Wednesday."
     });
   }
 
@@ -60,8 +60,8 @@ module.exports = async (req, res) => {
     if (d && d.status === "success" && d.data && d.data.link) {
       return res.status(200).json({ ok: true, checkout_url: d.data.link, tx_ref: txRef, amount: amount });
     }
-    return res.status(502).json({ ok: false, error: "Payment gateway unavailable — reach us on WhatsApp 0704 648 1828." });
+    return res.status(502).json({ ok: false, error: "Payment gateway unavailable — please email institutegpt@gmail.com." });
   } catch (e) {
-    return res.status(502).json({ ok: false, error: "Payment gateway unreachable — reach us on WhatsApp 0704 648 1828." });
+    return res.status(502).json({ ok: false, error: "Payment gateway unreachable — please email institutegpt@gmail.com." });
   }
 };
