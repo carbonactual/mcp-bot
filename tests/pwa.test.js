@@ -15,11 +15,11 @@ test('CIBN deployment has installable web-app metadata',()=>{
 });
 
 test('CIBN deployment registers the service worker',()=>{
-  assert.match(html,/navigator.serviceWorker.register('\/sw.js')/);
-  assert.match(sw,/addEventListener('install'/);
-  assert.match(sw,/addEventListener('fetch'/);
-  assert.match(sw,/offline.html/);
-  assert.match(sw,//api//);
+  assert.ok(html.includes("navigator.serviceWorker.register('/sw.js')"));
+  assert.ok(sw.includes("addEventListener('install'"));
+  assert.ok(sw.includes("addEventListener('fetch'"));
+  assert.ok(sw.includes('offline.html'));
+  assert.ok(sw.includes('/api/'));
 });
 
 test('CIBN deployment persists and resumes ABBA session identity',()=>{
